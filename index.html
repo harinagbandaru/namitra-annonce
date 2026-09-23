@@ -3,24 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>NĀMITRA Annonce | SOTA AI Advertising &amp; Creative Film Studio Hyderabad</title>
-  <meta name="description" content="NĀMITRA Annonce is a state-of-the-art AI advertising and creative cinema studio in Hyderabad producing cinematic commercials, viral Reels, and high-conversion ad engines.">
-  <meta name="theme-color" content="#070506">
+  <title>NĀMITRA Annonce | AI Advertising &amp; Creative Studio in Hyderabad</title>
+  <meta name="description" content="NĀMITRA Annonce is a Hyderabad creative studio producing AI-powered ads, Reels, brand films and digital campaigns for local businesses.">
+  <meta name="theme-color" content="#0B0708">
   <link rel="canonical" href="https://harinagbandaru.github.io/namitra-annonce/">
-  <meta property="og:title" content="NĀMITRA Annonce | SOTA AI Advertising &amp; Creative Film Studio">
-  <meta property="og:description" content="Where AI velocity meets cinematic prestige. Short-form commercials, brand films, and performance creative in Hyderabad.">
+  <meta property="og:title" content="NĀMITRA Annonce | AI Advertising &amp; Creative Studio in Hyderabad">
+  <meta property="og:description" content="NĀMITRA Annonce is a Hyderabad creative studio producing AI-powered ads, Reels, brand films and digital campaigns for local businesses.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://harinagbandaru.github.io/namitra-annonce/">
   <meta property="og:image" content="https://harinagbandaru.github.io/namitra-annonce/videos/poster-bahuvida-estate.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NĀMITRA Annonce | SOTA AI Advertising &amp; Creative Studio">
-  <meta name="twitter:description" content="AI velocity. Human direction. Cinematic prestige. Commercials and campaigns for ambitious brands.">
+  <meta name="twitter:title" content="NĀMITRA Annonce | AI Advertising &amp; Creative Studio in Hyderabad">
+  <meta name="twitter:description" content="AI-powered ads, Reels, brand films and campaigns for Hyderabad businesses.">
   <meta name="twitter:image" content="https://harinagbandaru.github.io/namitra-annonce/videos/poster-bahuvida-estate.jpg">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="fonts/cormorant-500.ttf" as="font" type="font/ttf">
-  <link rel="preload" href="fonts/cormorant-600.ttf" as="font" type="font/ttf">
-  <link rel="preload" href="fonts/geist-400.ttf" as="font" type="font/ttf">
-  <link rel="preload" href="fonts/geist-500.ttf" as="font" type="font/ttf">
+  <link rel="preload" href="fonts/cormorant-500.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="fonts/geist-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="css/site.css">
   <script>
   (function () {
@@ -29,29 +27,20 @@
     var prefs = {};
     try { prefs = JSON.parse(localStorage.getItem("namitra-prefs") || "{}") || {}; } catch (e) { prefs = {}; }
     var theme = prefs.theme || "cinema";
-    if (theme === "system") {
-      theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "paper" : "cinema";
-    }
+    if (theme === "system") theme = matchMedia("(prefers-color-scheme: light)").matches ? "paper" : "cinema";
     root.setAttribute("data-theme", theme === "paper" ? "paper" : "cinema");
     var contrast = prefs.contrast;
     if (contrast !== "high" && contrast !== "standard") {
-      contrast = window.matchMedia("(prefers-contrast: more)").matches ? "high" : "standard";
+      contrast = matchMedia("(prefers-contrast: more)").matches ? "high" : "standard";
     }
     root.setAttribute("data-contrast", contrast);
-    var motion = prefs.motion;
-    var reduce;
-    if (motion === "reduced") reduce = true;
-    else if (motion === "full") reduce = false;
-    else reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var reduce = prefs.motion === "reduced" ? true : prefs.motion === "full" ? false : matchMedia("(prefers-reduced-motion: reduce)").matches;
     root.setAttribute("data-motion", reduce ? "reduced" : "full");
     root.setAttribute("data-size", prefs.size || "m");
-    var grainOff = prefs.grain === "off" || reduce;
-    root.setAttribute("data-grain", grainOff ? "off" : "on");
+    root.setAttribute("data-grain", (prefs.grain === "off" || reduce) ? "off" : "on");
     root.setAttribute("data-cursor", prefs.cursor === "system" ? "system" : "studio");
-    var coarse = window.matchMedia("(pointer: coarse)").matches;
-    var cameraOn = !reduce && (prefs.camera !== "off");
-    root.setAttribute("data-camera", cameraOn ? "on" : "off");
-    root.setAttribute("data-sound", prefs.sound === "on" ? "on" : "off");
+    var camera = reduce ? false : prefs.camera === "off" ? false : prefs.camera === "on" ? true : !matchMedia("(pointer: coarse)").matches;
+    root.setAttribute("data-camera", camera ? "on" : "off");
   })();
   </script>
   <script type="application/ld+json">
@@ -76,12 +65,7 @@
         "url": "https://harinagbandaru.github.io/namitra-annonce/",
         "telephone": "+91-9703556947",
         "email": "bandaru.karunakar@gmail.com",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Kukatpally",
-          "addressRegion": "Hyderabad",
-          "addressCountry": "IN"
-        },
+        "address": { "@type": "PostalAddress", "addressLocality": "Kukatpally", "addressRegion": "Hyderabad", "addressCountry": "IN" },
         "founder": { "@id": "https://harinagbandaru.github.io/namitra-annonce/#founder" },
         "areaServed": "Hyderabad"
       },
@@ -94,1056 +78,451 @@
       },
       {
         "@type": "Service",
-        "name": "AI Advertising and Film Production",
+        "name": "Short-form advertising",
         "provider": { "@id": "https://harinagbandaru.github.io/namitra-annonce/#org" },
         "areaServed": "Hyderabad",
-        "serviceType": ["AI Commercials", "Brand Films", "Narrative Reels", "Meta Performance Funnels", "WhatsApp Campaigns", "Creative Direction"]
+        "serviceType": ["Ad films", "Reels", "Meta campaigns", "WhatsApp campaigns", "Creative strategy"]
       }
     ]
   }
   </script>
-  <style>
-    html { background: #070506; color: #F6F1E8; }
-    html[data-theme="paper"] { background: #F6F1E8; color: #4A0E18; }
-    html[data-contrast="high"]:not([data-theme="paper"]) { background: #000; color: #FFF; }
-  </style>
+  <style>html{background:#0B0708;color:#F6F1E8}html[data-theme="paper"]{background:#F6F1E8;color:#4A0E18}html[data-contrast="high"]:not([data-theme="paper"]){background:#000;color:#F6F1E8}</style>
 </head>
 <body>
   <a class="skip-link" href="#hero">Skip to content</a>
-  <noscript><style>.entry{display:none}#page{opacity:1!important;pointer-events:auto!important;}</style></noscript>
-
-  <!-- Atmospheric Texture & Lens Layers -->
+  <noscript><style>.entry{display:none}</style></noscript>
   <div class="grain" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
-  <div class="anamorphic-flare" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-ring"></span></div>
 
-  <!-- SOTA Viewfinder Magnetic Focus Reticle Cursor -->
-  <div class="cursor" id="cursor" aria-hidden="true">
-    <div class="cursor-reticle">
-      <span class="reticle-corner tl"></span>
-      <span class="reticle-corner tr"></span>
-      <span class="reticle-corner bl"></span>
-      <span class="reticle-corner br"></span>
-      <span class="cursor-crosshair"></span>
-      <span class="cursor-label">VIEW</span>
-    </div>
-  </div>
-
-  <!-- SVG Symbols Definition -->
-  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0">
     <symbol id="mark" viewBox="0 0 64 64">
-      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="6" y="18" width="36" height="28" rx="2"/>
-        <circle cx="24" cy="32" r="8"/>
-        <circle cx="24" cy="32" r="3.5" fill="currentColor"/>
-        <path d="M42 25h8l8 5v12l-8 5h-8"/>
-        <path d="M14 18v-6h14v6"/>
-        <circle cx="34" cy="23" r="1.5" fill="currentColor"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <rect x="6" y="20" width="34" height="26"/>
+        <circle cx="22" cy="33" r="7"/>
+        <path d="M40 26h8l6 4v8l-6 4h-8"/>
+        <path d="M14 20v-6h12v6"/>
       </g>
-    </symbol>
-    <symbol id="icon-sound-on" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zm-2.5 9h-3v-4.5h3L16 4v16l-4.5-3.5zm-5-3.5h2v2.5h-2zM14 8.83v6.34c1.19-.53 2-1.74 2-3.17s-.81-2.64-2-3.17z"/>
-    </symbol>
-    <symbol id="icon-sound-off" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+      <circle cx="22" cy="33" r="2.2" fill="currentColor"/>
     </symbol>
   </svg>
 
-  <!-- Hollywood / SOTA Cinematic Entry Sequence -->
-  <div class="entry" id="entry" role="dialog" aria-modal="true" aria-label="Cinematic Title Sequence">
-    <div class="entry-letterbox-top" aria-hidden="true"></div>
+  <div class="entry" id="entry" role="dialog" aria-modal="true" aria-label="Title card">
     <div class="entry-inner">
-      <div class="entry-slate">
-        <div class="entry-reticle" aria-hidden="true">
-          <span class="reticle-line h"></span>
-          <span class="reticle-line v"></span>
-          <span class="reticle-ring"></span>
-          <span class="reticle-ring inner"></span>
-        </div>
-        <div class="entry-telemetry">
-          <span class="entry-code" id="entry-timecode">00:00:01:24</span>
-          <span class="entry-aspect">2.39 : 1 ANAMORPHIC</span>
-          <span class="entry-fps">24.000 FPS</span>
-        </div>
-        <div class="entry-titles">
-          <p class="entry-presents">A STUDIO COMMISSION BY</p>
-          <p class="entry-name">NĀMITRA</p>
-          <p class="entry-annonce">A N N O N C E</p>
-          <span class="entry-gold-beam" aria-hidden="true"></span>
-          <p class="entry-sub">AI PRODUCTION · HUMAN STRATEGY · REAL-WORLD IMPACT</p>
-          <p class="entry-location">KUKATPALLY · HYDERABAD</p>
-        </div>
-      </div>
+      <p class="entry-name">NĀMITRA</p>
+      <p class="entry-annonce">Annonce</p>
+      <span class="entry-rule" aria-hidden="true"></span>
+      <p class="entry-sub">Ignites · Framed · Advertise</p>
     </div>
-    <div class="entry-controls">
-      <button class="entry-sound-btn" id="entry-sound-btn" type="button" aria-label="Toggle Sound">
-        <svg class="icon-sound" aria-hidden="true"><use href="#icon-sound-on"></use></svg>
-        <span>SOUND FX: <strong id="sound-state-label">ACTIVE</strong></span>
-      </button>
-      <button class="entry-skip" id="skip-entry" type="button">ENTER STUDIO [ESC / SPACE] <span aria-hidden="true">→</span></button>
-    </div>
-    <div class="entry-letterbox-bottom" aria-hidden="true"></div>
+    <button class="entry-skip" id="skip-entry" type="button">Skip</button>
   </div>
 
-  <!-- Studio Shell -->
   <div id="page">
-    <!-- Floating Telemetry HUD Navigation -->
-    <header class="hud" id="hud">
-      <div class="hud-inner wrap">
-        <a class="hud-brand" href="#hero" aria-label="NĀMITRA Annonce Home">
-          <svg class="mark hud-mark" aria-hidden="true"><use href="#mark"></use></svg>
-          <div class="hud-brand-text">
-            <span class="hud-name">NĀMITRA</span>
-            <span class="hud-sep">·</span>
-            <span class="hud-sub">ANNONCE</span>
-          </div>
-        </a>
+    <nav class="rail" aria-label="Studio">
+      <svg class="mark" aria-hidden="true"><use href="#mark"></use></svg>
+      <p class="rail-creed">Story · Strategy · Impact</p>
+      <button class="settings-open" id="settings-open" type="button" aria-haspopup="dialog" aria-controls="settings" aria-expanded="false">Settings</button>
+    </nav>
 
-        <!-- Live Telemetry Status Ticker -->
-        <div class="hud-telemetry" aria-label="Studio status telemetry">
-          <div class="telemetry-pill">
-            <span class="pulse-indicator" aria-hidden="true"></span>
-            <span class="telemetry-text">STUDIO OPERATIONAL · HYDERABAD</span>
-          </div>
-          <div class="telemetry-pill time-pill">
-            <span class="geo-icon" aria-hidden="true">⌖</span>
-            <span class="telemetry-text">HYDERABAD <time id="ist-clock">14:40:00</time> IST</span>
-          </div>
-        </div>
-
-        <!-- Navigation Links -->
-        <nav class="hud-nav" aria-label="Primary Navigation">
-          <a class="hud-link" href="#work">Showcase</a>
-          <a class="hud-link" href="#metrics">Facts</a>
-          <a class="hud-link" href="#services">Disciplines</a>
-          <a class="hud-link" href="#method">Protocol</a>
-          <a class="hud-link" href="#packages">Pricing</a>
-          <a class="hud-link" href="#studio">Studio</a>
-        </nav>
-
-        <!-- Right HUD Utilities -->
-        <div class="hud-actions">
-          <button class="hud-audio-btn" id="hud-sound-btn" type="button" aria-label="Toggle audio effects" title="Toggle audio effects">
-            <svg class="icon-audio" aria-hidden="true"><use href="#icon-sound-on"></use></svg>
-          </button>
-          <button class="settings-open" id="settings-open" type="button" aria-haspopup="dialog" aria-controls="settings" aria-expanded="false" title="System Settings">
-            <span class="settings-icon" aria-hidden="true">⚙</span>
-            <span class="settings-text">Settings</span>
-          </button>
-          <a class="hud-cta" href="#contact">Get An Ad <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </header>
-
-    <!-- Side Rail Creed (Desktop) -->
-    <aside class="rail" aria-hidden="true">
-      <svg class="mark rail-mark"><use href="#mark"></use></svg>
-      <div class="rail-creed">AI VELOCITY · HUMAN DIRECTION · PRESTIGE IMPACT</div>
-      <div class="rail-geo">17.4851° N, 78.4093° E</div>
-    </aside>
-
-    <!-- Hero Section with 3D WebGL Canvas -->
     <header class="hero" id="hero" tabindex="-1" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <div class="hero-kicker-row">
-            <span class="hero-badge">AI-NATIVE FILM &amp; BRAND STUDIO</span>
-            <span class="hero-dot" aria-hidden="true">·</span>
-            <span class="hero-city">HYDERABAD, INDIA</span>
-          </div>
-
-          <hr class="rule" aria-hidden="true">
-
-          <h1 id="hero-title">
-            AI Velocity.<br>
-            <em>Human Direction.</em><br>
-            Cinematic Prestige.
-          </h1>
-
-          <p class="for-whom">
-            We forge high-retention commercials, viral narrative Reels, and algorithmic ad engines for businesses that refuse to blend into the background.
+          <p class="mast">
+            <span class="mast-name">NĀMITRA</span>
+            <span class="mast-dot" aria-hidden="true">·</span>
+            <span class="mast-annonce">Annonce</span>
           </p>
-
+          <p class="place">Kukatpally, Hyderabad</p>
+          <hr class="rule">
+          <h1 id="hero-title">AI production.<br><em>Human strategy.</em><br>Real-world impact.</h1>
+          <p class="lede">Short ads, Reels, and campaigns for shops, clinics, coaches, and local launches.</p>
           <div class="cta-row">
-            <a class="cta cta-primary" href="#contact">
-              <span>Commission an Ad</span>
-              <span class="cta-arrow" aria-hidden="true">→</span>
-            </a>
-            <a class="cta cta-secondary" href="https://wa.me/919703556947?text=Hi%20N%C4%80MITRA%2C%20I%20want%20to%20commission%20an%20ad%20campaign%20for%20my%20business.%0ABusiness%3A%0ALocation%3A%0ABudget%3A" target="_blank" rel="noopener noreferrer" aria-label="Direct WhatsApp Commission Line">
-              <span class="wa-indicator" aria-hidden="true">💬</span>
-              <span>WhatsApp Direct</span>
-            </a>
-            <button class="cta cta-tertiary" type="button" data-film data-src="videos/namitra-studio-vertical-reel.mp4" data-poster="videos/poster-namitra-reel.jpg" data-title="NĀMITRA Reel: From Strategy to Real Impact" data-note="A behind-the-scenes showcase of AI velocity translated into commercial retention.">
-              <span class="play-icon" aria-hidden="true">▶</span>
-              <span>Watch Reel (30s)</span>
-            </button>
+            <a class="cta cta-primary" href="#contact">Get an ad made <span aria-hidden="true">→</span></a>
+            <a class="cta cta-secondary" href="https://wa.me/919703556947?text=Hi%20N%C4%80MITRA%2C%20I%20want%20an%20ad%20for%20my%20business.%0ABusiness%3A%0ALocation%3A%0AWhat%20I%20sell%3A%0ABudget%3A" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp NĀMITRA, opens WhatsApp">WhatsApp</a>
           </div>
-
-          <!-- Trust Bar -->
-          <div class="hero-trust">
-            <div class="trust-item">
-              <strong>100% In-House</strong>
-              <span>Generative AI &amp; Direction</span>
-            </div>
-            <div class="trust-sep" aria-hidden="true">/</div>
-            <div class="trust-item">
-              <strong>Days</strong>
-              <span>Brief to first cut</span>
-            </div>
-            <div class="trust-sep" aria-hidden="true">/</div>
-            <div class="trust-item">
-              <strong>Hyderabad</strong>
-              <span>Kukatpally Flagship</span>
-            </div>
-          </div>
+          <p class="trust">Based in Hyderabad · AI-native production · A person still decides</p>
         </div>
-
-        <!-- SOTA 3D WebGL Cinema Stage -->
-        <div class="sculpture" id="sculpture" aria-label="Interactive 3D Cinema Apparatus">
-          <div class="stage-3d-wrapper">
-            <!-- Three.js Canvas Container -->
-            <div class="canvas-container" id="canvas-container">
-              <canvas id="webgl-canvas" aria-label="Interactive 3D Anamorphic Cinema Lens and Neural Engine"></canvas>
-              <div class="canvas-loader" id="canvas-loader" aria-hidden="true">
-                <span class="loader-spinner"></span>
-                <span class="loader-text">INITIALIZING 3D ENGINE...</span>
-              </div>
+        <div class="sculpture" aria-hidden="true">
+          <div class="rig" id="rig">
+            <svg class="cam" viewBox="0 0 460 300">
+              <defs>
+                <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#F4E7C8"/>
+                  <stop offset="0.45" stop-color="#E8D5A3"/>
+                  <stop offset="1" stop-color="#8A6B34"/>
+                </linearGradient>
+                <radialGradient id="glass" cx="38%" cy="34%" r="68%">
+                  <stop offset="0" stop-color="#F6F1E8"/>
+                  <stop offset="0.45" stop-color="#C4A35A"/>
+                  <stop offset="1" stop-color="#14080C"/>
+                </radialGradient>
+              </defs>
+              <rect x="28" y="78" width="404" height="196" fill="url(#metal)" stroke="#E8D5A3" stroke-width="2"/>
+              <rect x="86" y="42" width="270" height="40" fill="url(#metal)" stroke="#E8D5A3" stroke-width="1.5"/>
+              <rect x="190" y="24" width="64" height="20" fill="#E8D5A3"/>
+              <circle cx="168" cy="176" r="72" fill="#24180F" stroke="#F3E6C4" stroke-width="3"/>
+              <circle cx="168" cy="176" r="48" fill="#120C09" stroke="#C4A35A" stroke-width="4"/>
+              <circle cx="168" cy="176" r="32" fill="url(#glass)"/>
+              <rect x="292" y="118" width="108" height="78" fill="#2A1A10" stroke="#E8D5A3"/>
+              <circle cx="346" cy="157" r="18" fill="#0B0708" stroke="#C4A35A" stroke-width="3"/>
+            </svg>
+            <div class="plinth" aria-hidden="true">
+              <div class="plinth-cap"></div>
+              <div class="plinth-shaft"></div>
+              <div class="plinth-base"></div>
             </div>
-
-            <!-- 3D HUD Telemetry Overlay -->
-            <div class="stage-hud" aria-hidden="true">
-              <div class="stage-hud-corner tl">
-                <span class="hud-metric">OPTICS: 35MM ANAMORPHIC T1.5</span>
-                <span class="hud-metric">COATING: GOLD MULTI-ELEMENT</span>
-              </div>
-              <div class="stage-hud-corner tr">
-                <span class="hud-metric">SHUTTER: 180.0°</span>
-                <span class="hud-metric">ISO: 800 CINE</span>
-              </div>
-              <div class="stage-hud-corner bl">
-                <span class="hud-metric">FPS: 24.000 PRO</span>
-                <span class="hud-metric">IRIS: ACTIVE MECHANISM</span>
-              </div>
-              <div class="stage-hud-corner br">
-                <span class="hud-metric">CORE: SYNAPTIC V4</span>
-                <span class="hud-metric">RAYTRACING: REAL-TIME</span>
-              </div>
-            </div>
-
-            <!-- 3D Mode Selector Buttons -->
-            <div class="stage-modes" role="group" aria-label="3D Visualization Modes">
-              <button class="stage-mode-btn is-active" type="button" data-mode="anamorphic" aria-pressed="true">
-                <span class="mode-dot"></span>
-                <span>35mm Anamorphic</span>
-              </button>
-              <button class="stage-mode-btn" type="button" data-mode="neural" aria-pressed="false">
-                <span class="mode-dot"></span>
-                <span>Neural Core</span>
-              </button>
-              <button class="stage-mode-btn" type="button" data-mode="shutter" aria-pressed="false">
-                <span class="mode-dot"></span>
-                <span>Optical Shutter</span>
-              </button>
-            </div>
-
-            <p class="stage-hint" aria-hidden="true">
-              <span>✦ DRAG OR MOVE TO ROTATE IN 3D · CLICK BUTTONS TO TRANSFORM</span>
-            </p>
           </div>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <!-- SOTA Metrics & Agency Proof Banner -->
-      <section class="block-metrics" id="metrics" aria-label="How the studio works">
+      <section class="block" id="work" aria-labelledby="work-title">
         <div class="wrap">
-          <div class="metrics-grid">
-            <div class="metric-card reveal">
-              <span class="metric-kicker">WHERE</span>
-              <strong class="metric-val">Local</strong>
-              <p class="metric-desc">Kukatpally, Hyderabad. Built for shops, clinics, coaches, and local launches.</p>
-            </div>
-            <div class="metric-card reveal">
-              <span class="metric-kicker">HOW FAST</span>
-              <strong class="metric-val">Days</strong>
-              <p class="metric-desc">Brief to a first cut in days, not weeks.</p>
-            </div>
-            <div class="metric-card reveal">
-              <span class="metric-kicker">WHO DECIDES</span>
-              <strong class="metric-val">Human</strong>
-              <p class="metric-desc">AI generates the variations. A person chooses the cut.</p>
-            </div>
-            <div class="metric-card reveal">
-              <span class="metric-kicker">WHERE TO START</span>
-              <strong class="metric-val">Rs 2K</strong>
-              <p class="metric-desc">One short ad. Three variations at Rs 5K. Creative and a campaign at Rs 10K.</p>
-            </div>
+          <header class="sec-head">
+            <p class="kicker" id="work-kicker">Selected work</p>
+            <h2 id="work-title">Films a business can run.</h2>
+          </header>
+          <div class="vault">
+            <article>
+              <button class="frame wide" type="button" data-film data-src="videos/city-medicals-urban-logistics.mp4" data-poster="videos/poster-city-medicals.jpg" data-title="City Medicals" data-note="10-second local retail film. A pharmacy on a Hyderabad street, and a line a neighbour can repeat." aria-label="Play City Medicals, 10 seconds, local retail">
+                <img src="videos/poster-city-medicals.jpg" alt="Street view for a 10-second City Medicals retail film">
+                <span class="play" aria-hidden="true"></span>
+                <span class="frame-card"><strong>City Medicals</strong><span>10 sec · Local retail</span></span>
+              </button>
+            </article>
+            <article>
+              <button class="frame wide" type="button" data-film data-src="videos/bahuvida-macadamia-estate-film.mp4" data-poster="videos/poster-bahuvida-estate.jpg" data-title="Bahuvida Macadamia Estate" data-note="60-second brand film. An estate, an arrival, and a name carried further than a slogan." aria-label="Play Bahuvida, 60 seconds, brand film">
+                <img src="videos/poster-bahuvida-estate.jpg" alt="Aerial view of the Bahuvida macadamia estate">
+                <span class="play" aria-hidden="true"></span>
+                <span class="frame-card"><strong>Bahuvida</strong><span>60 sec · Brand film</span></span>
+              </button>
+            </article>
+            <article>
+              <button class="frame wide" type="button" data-film data-src="videos/jcb-industrial-regional-ad.mp4" data-poster="videos/poster-jcb-ad.jpg" data-title="JCB Industrial Lubricants" data-note="30-second industrial ad spoken in the language of the trade." aria-label="Play JCB, 30 seconds, industrial">
+                <img src="videos/poster-jcb-ad.jpg" alt="Industrial warehouse scene from the JCB lubricants ad">
+                <span class="play" aria-hidden="true"></span>
+                <span class="frame-card"><strong>JCB</strong><span>30 sec · Industrial</span></span>
+              </button>
+            </article>
           </div>
+          <p class="more"><a class="text-link" href="#all-work">View all work</a></p>
         </div>
       </section>
 
-      <!-- SCENE 01: Selected Works & Video Showcase -->
-      <section class="block work" id="work" aria-labelledby="kicker-work">
+      <section class="block" id="services" aria-labelledby="services-title">
         <div class="wrap">
-          <header class="sec-head reveal">
-            <div class="scene-slate">
-              <span class="scene-num">SCENE // 01</span>
-              <span class="scene-sep">/</span>
-              <span class="scene-title">CINEMA REPERTOIRE</span>
-            </div>
-            <h2 id="kicker-work">Commercials a business can actually scale.</h2>
-            <p class="sec-desc">Every piece is built for human attention in an algorithmic feed. Hover to preview; click to experience theatre playback.</p>
+          <header class="sec-head">
+            <p class="kicker">What we do</p>
+            <h2 id="services-title">Five ways to start.</h2>
           </header>
-
-          <!-- Showcase Video Grid -->
-          <div class="vault vault-sota">
-            <!-- Film 1: City Medicals -->
-            <article class="cut cut-wide reveal" data-category="retail">
-              <div class="frame-container">
-                <button class="frame wide" type="button" data-film data-src="videos/city-medicals-urban-logistics.mp4" data-poster="videos/poster-city-medicals.jpg" data-title="City Medicals — Urban Logistics" data-note="10-second hyper-local retail film. A pharmacy on a Hyderabad street, an electric delivery run, and a hook a neighbour immediately trusts." aria-label="Play City Medicals Commercial">
-                  <img src="videos/poster-city-medicals.jpg" alt="City Medicals urban logistics street scene in Kukatpally" loading="lazy">
-                  <!-- Hover video tag for instant preview -->
-                  <video class="hover-preview" muted loop playsinline preload="none" src="videos/city-medicals-urban-logistics.mp4" aria-hidden="true"></video>
-                  <div class="frame-reticle-overlay" aria-hidden="true">
-                    <span class="frame-tag">10 SEC · LOCAL RETAIL</span>
-                    <span class="frame-badge">4K CINE</span>
-                    <span class="frame-play-btn"><span class="play-triangle"></span></span>
-                  </div>
-                  <div class="frame-card">
-                    <strong>City Medicals</strong>
-                    <span>HYDERABAD URBAN LOGISTICS · 10 SECONDS</span>
-                  </div>
-                </button>
-              </div>
-              <div class="cut-meta">
-                <p class="cut-hook">“Your medicine is closer than you think.”</p>
-                <div class="cut-tags">
-                  <span>Local Retail</span>
-                  <span>Meta Ad</span>
-                  <span>WhatsApp Lead</span>
-                </div>
-              </div>
+          <div class="disciplines">
+            <article class="discipline">
+              <h3>Film &amp; Content</h3>
+              <p class="plain">Short-form ads, product films and Reels built for social media.</p>
+              <p class="poetic">Frames that carry a name farther than a slogan.</p>
             </article>
-
-            <!-- Film 2: Bahuvida Macadamia Estate -->
-            <article class="cut cut-wide reveal" data-category="brand">
-              <div class="frame-container">
-                <button class="frame wide" type="button" data-film data-src="videos/bahuvida-macadamia-estate-film.mp4" data-poster="videos/poster-bahuvida-estate.jpg" data-title="Bahuvida Macadamia Estate" data-note="60-second flagship brand film. An arrival, agricultural grandeur, and prestige storytelling carried far beyond a corporate slogan." aria-label="Play Bahuvida Macadamia Estate Film">
-                  <img src="videos/poster-bahuvida-estate.jpg" alt="Aerial view of the Bahuvida macadamia estate and villa" loading="lazy">
-                  <video class="hover-preview" muted loop playsinline preload="none" src="videos/bahuvida-macadamia-estate-film.mp4" aria-hidden="true"></video>
-                  <div class="frame-reticle-overlay" aria-hidden="true">
-                    <span class="frame-tag">60 SEC · BRAND CINEMA</span>
-                    <span class="frame-badge">ANAMORPHIC</span>
-                    <span class="frame-play-btn"><span class="play-triangle"></span></span>
-                  </div>
-                  <div class="frame-card">
-                    <strong>Bahuvida Macadamia</strong>
-                    <span>AGRICULTURAL PRESTIGE · 60 SECONDS</span>
-                  </div>
-                </button>
-              </div>
-              <div class="cut-meta">
-                <p class="cut-hook">“An estate, an arrival, and an agricultural legacy.”</p>
-                <div class="cut-tags">
-                  <span>Brand Film</span>
-                  <span>Luxury Real Estate</span>
-                  <span>YouTube / Meta</span>
-                </div>
-              </div>
+            <article class="discipline">
+              <h3>Branding &amp; Advertising</h3>
+              <p class="plain">The name, the mark, and the line people repeat.</p>
+              <p class="poetic">Marks, lockups, and the line the city remembers.</p>
             </article>
-
-            <!-- Film 3: JCB Industrial -->
-            <article class="cut cut-wide reveal" data-category="industrial">
-              <div class="frame-container">
-                <button class="frame wide" type="button" data-film data-src="videos/jcb-industrial-regional-ad.mp4" data-poster="videos/poster-jcb-ad.jpg" data-title="JCB Industrial Lubricants" data-note="30-second industrial ad film spoken in the heavy mechanical language of the trade. Built for high conversion in B2B dealer networks." aria-label="Play JCB Industrial Commercial">
-                  <img src="videos/poster-jcb-ad.jpg" alt="Industrial warehouse scene from the JCB lubricants commercial" loading="lazy">
-                  <video class="hover-preview" muted loop playsinline preload="none" src="videos/jcb-industrial-regional-ad.mp4" aria-hidden="true"></video>
-                  <div class="frame-reticle-overlay" aria-hidden="true">
-                    <span class="frame-tag">30 SEC · HEAVY INDUSTRY</span>
-                    <span class="frame-badge">COMMERCIAL</span>
-                    <span class="frame-play-btn"><span class="play-triangle"></span></span>
-                  </div>
-                  <div class="frame-card">
-                    <strong>JCB Lubricants</strong>
-                    <span>REGIONAL INDUSTRIAL · 30 SECONDS</span>
-                  </div>
-                </button>
-              </div>
-              <div class="cut-meta">
-                <p class="cut-hook">“Spoken in the unforgiving language of the machinery trade.”</p>
-                <div class="cut-tags">
-                  <span>B2B Industrial</span>
-                  <span>Regional Language</span>
-                  <span>Dealer Funnel</span>
-                </div>
-              </div>
+            <article class="discipline">
+              <h3>Creative Strategy</h3>
+              <p class="plain">What to say, and what to cut, before money is spent.</p>
+              <p class="poetic">Before the camera. After the brief. The cut that decides.</p>
             </article>
-
-            <!-- Film 4: Studio Vertical Reel -->
-            <article class="cut cut-tall reveal" data-category="social">
-              <div class="frame-container">
-                <button class="frame tall" type="button" data-film data-src="videos/namitra-studio-vertical-reel.mp4" data-poster="videos/poster-namitra-reel.jpg" data-title="NĀMITRA Studio Vertical Reel" data-note="30-second vertical 9:16 Reel. Engineered specifically for thumb-stopping retention and direct conversions on Instagram and WhatsApp." aria-label="Play Studio Vertical Reel">
-                  <img src="videos/poster-namitra-reel.jpg" alt="Vertical frame from the studio Reel" loading="lazy">
-                  <video class="hover-preview" muted loop playsinline preload="none" src="videos/namitra-studio-vertical-reel.mp4" aria-hidden="true"></video>
-                  <div class="frame-reticle-overlay" aria-hidden="true">
-                    <span class="frame-tag">9:16 · VIRAL REEL</span>
-                    <span class="frame-badge">30 SEC</span>
-                    <span class="frame-play-btn"><span class="play-triangle"></span></span>
-                  </div>
-                  <div class="frame-card">
-                    <strong>NĀMITRA Reel</strong>
-                    <span>VERTICAL FIRST · 30 SEC</span>
-                  </div>
-                </button>
-              </div>
-              <div class="cut-meta">
-                <p class="cut-hook">“Frames that carry a brand further than any cold caption.”</p>
-                <div class="cut-tags">
-                  <span>9:16 Vertical</span>
-                  <span>Instagram Reel</span>
-                  <span>Social Velocity</span>
-                </div>
-              </div>
+            <article class="discipline">
+              <h3>Digital Campaigns</h3>
+              <p class="plain">Ads on Meta and WhatsApp, watched before they are scaled.</p>
+              <p class="poetic">Watched, kept, or stopped. Then the next cut.</p>
             </article>
-
-            <!-- Film 5: Canyon Railway Spot -->
-            <article class="cut cut-square reveal" data-category="action">
-              <div class="frame-container">
-                <button class="frame square" type="button" data-film data-src="videos/bahuvida-cinematic-action.mp4" data-poster="videos/poster-bahuvida-action.jpg" data-title="Canyon Railway Action Spot" data-note="58-second high-octane cinematic spot. Visual scale, dynamic pacing, and cinematic kinetic rhythm." aria-label="Play Canyon Railway Spot">
-                  <img src="videos/poster-bahuvida-action.jpg" alt="Action frame from the canyon railway spot" loading="lazy">
-                  <video class="hover-preview" muted loop playsinline preload="none" src="videos/bahuvida-cinematic-action.mp4" aria-hidden="true"></video>
-                  <div class="frame-reticle-overlay" aria-hidden="true">
-                    <span class="frame-tag">58 SEC · KINETIC ACTION</span>
-                    <span class="frame-badge">1:1 ASPECT</span>
-                    <span class="frame-play-btn"><span class="play-triangle"></span></span>
-                  </div>
-                  <div class="frame-card">
-                    <strong>Canyon Railway</strong>
-                    <span>KINETIC ACTION SPOT · 58 SEC</span>
-                  </div>
-                </button>
-              </div>
-              <div class="cut-meta">
-                <p class="cut-hook">“Pacing engineered to make scrolling fingers freeze.”</p>
-                <div class="cut-tags">
-                  <span>Action Cinema</span>
-                  <span>Square Cut</span>
-                  <span>High Retention</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Film 6: Aerial Drone Precision -->
-            <article class="cut cut-wide reveal" data-category="aerial">
-              <div class="frame-container">
-                <button class="frame wide" type="button" data-film data-src="videos/luxury-estate-aerial-drone.mp4" data-poster="videos/poster-estate-drone.jpg" data-title="Topographic Aerial Grandeur" data-note="10-second ultra-wide aerial drone sweep. Establishing pure visual prestige and real estate scale before a single word is spoken." aria-label="Play Aerial Estate Film">
-                  <img src="videos/poster-estate-drone.jpg" alt="Drone view over orchard rows and an estate" loading="lazy">
-                  <video class="hover-preview" muted loop playsinline preload="none" src="videos/luxury-estate-aerial-drone.mp4" aria-hidden="true"></video>
-                  <div class="frame-reticle-overlay" aria-hidden="true">
-                    <span class="frame-tag">10 SEC · 4K AERIAL</span>
-                    <span class="frame-badge">PRECISION</span>
-                    <span class="frame-play-btn"><span class="play-triangle"></span></span>
-                  </div>
-                  <div class="frame-card">
-                    <strong>Aerial Drone</strong>
-                    <span>TOPOGRAPHIC SCALE · 10 SEC</span>
-                  </div>
-                </button>
-              </div>
-              <div class="cut-meta">
-                <p class="cut-hook">“Scale and authority established before a word is spoken.”</p>
-                <div class="cut-tags">
-                  <span>Aerial Drone</span>
-                  <span>Visual Grandeur</span>
-                  <span>Estate &amp; Land</span>
-                </div>
-              </div>
+            <article class="discipline">
+              <h3>Advisory</h3>
+              <p class="plain">When the job is bigger than one launch.</p>
+              <p class="poetic">Counsel when the work is larger than a single film.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- SCENE 02: Core Capabilities & Discipline Matrix -->
-      <section class="block disciplines-section" id="services" aria-labelledby="kicker-services">
+      <section class="block" id="before" aria-labelledby="before-title">
         <div class="wrap">
-          <header class="sec-head reveal">
-            <div class="scene-slate">
-              <span class="scene-num">SCENE // 02</span>
-              <span class="scene-sep">/</span>
-              <span class="scene-title">AGENCY DISCIPLINES</span>
-            </div>
-            <h2 id="kicker-services">Engineered for market dominance.</h2>
-            <p class="sec-desc">We replace sluggish agency bureaucracy with a high-velocity AI cinema pipeline governed by senior human creative direction.</p>
+          <header class="sec-head">
+            <p class="kicker">Before → after</p>
+            <h2 id="before-title">A line, then a film.</h2>
           </header>
-
-          <div class="disciplines-grid">
-            <article class="discipline-card reveal">
-              <div class="card-num">01</div>
-              <div class="card-icon" aria-hidden="true">🎬</div>
-              <h3>AI Commercials &amp; Brand Films</h3>
-              <p class="plain">8–60 second cinematic films engineered for mobile feeds and broadcast. We generate dozens of photorealistic camera angles, environments, and product iterations in hours.</p>
-              <p class="poetic">“Frames that carry a brand’s name farther than any generic corporate tagline.”</p>
-              <ul class="card-specs">
-                <li>Photorealistic Neural Sets</li>
-                <li>Cinematic Sound &amp; Color Grading</li>
-                <li>Broadcast &amp; Web Mastering</li>
-              </ul>
-            </article>
-
-            <article class="discipline-card reveal">
-              <div class="card-num">02</div>
-              <div class="card-icon" aria-hidden="true">📱</div>
-              <h3>Viral Narrative Reels</h3>
-              <p class="plain">Vertical-first (9:16) video architecture designed specifically for the Instagram and YouTube algorithms. Built to stop the scroll in under 1.5 seconds and trigger instant saves and shares.</p>
-              <p class="poetic">“Vertical, compelling, watched to completion — never skipped or filed away.”</p>
-              <ul class="card-specs">
-                <li>1.5-Second Hook Architecture</li>
-                <li>Dynamic Motion Typography</li>
-                <li>Sound-Synced Pacing</li>
-              </ul>
-            </article>
-
-            <article class="discipline-card reveal">
-              <div class="card-num">03</div>
-              <div class="card-icon" aria-hidden="true">⚡</div>
-              <h3>Meta &amp; WhatsApp Growth Engines</h3>
-              <p class="plain">Direct-response ad funnels that direct warmed-up viewers straight into your WhatsApp or checkout pipeline. We launch, evaluate retention at 48 hours, kill what fails, and scale what prints revenue.</p>
-              <p class="poetic">“Tested with real rupee budgets before serious media spend is committed.”</p>
-              <ul class="card-specs">
-                <li>WhatsApp One-Click Direct Briefs</li>
-                <li>Multi-Hook Ad Variation Testing</li>
-                <li>CAC Reduction Optimization</li>
-              </ul>
-            </article>
-
-            <article class="discipline-card reveal">
-              <div class="card-num">04</div>
-              <div class="card-icon" aria-hidden="true">👁️</div>
-              <h3>Strategic Creative Direction</h3>
-              <p class="plain">Before any AI synthesis or camera shutter clicks, we distill your offering into a single undeniable market hook. What to emphasize, and crucially, what to ruthlessly cut.</p>
-              <p class="poetic">“Before the prompt. After the brief. The editorial cut that decides success.”</p>
-              <ul class="card-specs">
-                <li>Brand Positioning &amp; Hook Matrix</li>
-                <li>Scriptwriting &amp; Prompt Engineering</li>
-                <li>Executive Advisory</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- SCENE 03: The SOTA Transformation (Before vs NĀMITRA) -->
-      <section class="block transformation-section" id="before" aria-labelledby="kicker-before">
-        <div class="wrap">
-          <header class="sec-head reveal">
-            <div class="scene-slate">
-              <span class="scene-num">SCENE // 03</span>
-              <span class="scene-sep">/</span>
-              <span class="scene-title">THE TRANSFORMATION</span>
+          <div class="ba">
+            <div>
+              <p class="label">Before</p>
+              <p class="quote">“We are a pharmacy in Kukatpally.”</p>
             </div>
-            <h2 id="kicker-before">The anatomy of a commercial leap.</h2>
-            <p class="sec-desc">Witness how a bland local business pitch transforms into an emotionally compelling cinematic commercial through the NĀMITRA lens.</p>
-          </header>
-
-          <div class="transformation-stage reveal">
-            <div class="transform-card before-card">
-              <div class="transform-tag">STANDARD LOCAL ADVERTISING</div>
-              <div class="transform-visual" aria-hidden="true">
-                <span class="stagnant-icon">📄</span>
-                <p class="stagnant-label">Stagnant Flyer / Cluttered Graphic</p>
-              </div>
-              <blockquote class="transform-quote">
-                “We are a trusted retail pharmacy in Kukatpally offering discounts on all brands since 2018.”
-              </blockquote>
-              <ul class="transform-breakdown">
-                <li>✕ Ignored in 0.4 seconds</li>
-                <li>✕ Zero emotional hook or storytelling</li>
-                <li>✕ High cost per lead, low consumer memory</li>
-              </ul>
-            </div>
-
-            <div class="transform-divider" aria-hidden="true">
-              <div class="transform-arrow">⚡</div>
-              <span class="transform-label">NĀMITRA TRANSLATION</span>
-            </div>
-
-            <div class="transform-card after-card">
-              <div class="transform-tag highlight">THE NĀMITRA CINEMATIC STANDARD</div>
-              <div class="transform-visual active" aria-hidden="true">
-                <span class="cinema-icon">🎬</span>
-                <p class="cinema-label">10-Sec High-Retention Anamorphic Film</p>
-              </div>
-              <blockquote class="transform-quote highlight">
-                “Your medicine is closer than you think. Under the night rain of Kukatpally, our wheels are already turning.”
-              </blockquote>
-              <ul class="transform-breakdown highlight">
-                <li>✓ 78% 3-second hook retention rate</li>
-                <li>✓ Direct WhatsApp tap-to-order funnel integration</li>
-                <li>✓ Positioned as an indispensable community pillar</li>
-              </ul>
+            <div>
+              <p class="label">NĀMITRA</p>
+              <p class="quote">“Your medicine is closer than you think.”</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- SCENE 04: The NĀMITRA Protocol / Production System -->
-      <section class="block protocol-section" id="method" aria-labelledby="kicker-method">
-        <div class="wrap">
-          <header class="sec-head reveal">
-            <div class="scene-slate">
-              <span class="scene-num">SCENE // 04</span>
-              <span class="scene-sep">/</span>
-              <span class="scene-title">STUDIO PROTOCOL</span>
-            </div>
-            <h2 id="kicker-method">From extraction to market impact.</h2>
-            <p class="sec-desc">Five rigorous milestones that turn vague business ambitions into measured commercial victories.</p>
-          </header>
-
-          <ol class="protocol-grid">
-            <li class="protocol-step reveal">
-              <div class="step-num">01</div>
-              <div class="step-bar" aria-hidden="true"></div>
-              <h3>Extraction</h3>
-              <p>We interrogate your product until we find the singular sharpest reason someone buys today. No fluff, no jargon.</p>
-              <span class="step-badge">DAY 01</span>
-            </li>
-            <li class="protocol-step reveal">
-              <div class="step-num">02</div>
-              <div class="step-bar" aria-hidden="true"></div>
-              <h3>Neural Synthesis</h3>
-              <p>Our AI pipeline generates dozens of lighting setups, cinematic angles, and pacing variations in parallel.</p>
-              <span class="step-badge">DAY 01–02</span>
-            </li>
-            <li class="protocol-step reveal">
-              <div class="step-num">03</div>
-              <div class="step-bar" aria-hidden="true"></div>
-              <h3>Director Cut</h3>
-              <p>Human senior creative direction cuts the fat, tunes the acoustic timing, and polishes the color grading.</p>
-              <span class="step-badge">DAY 02–03</span>
-            </li>
-            <li class="protocol-step reveal">
-              <div class="step-num">04</div>
-              <div class="step-bar" aria-hidden="true"></div>
-              <h3>Rapid Deployment</h3>
-              <p>We launch directly into Meta feeds and WhatsApp funnels targeted hyper-locally across Hyderabad and Telangana.</p>
-              <span class="step-badge">DAY 03</span>
-            </li>
-            <li class="protocol-step reveal">
-              <div class="step-num">05</div>
-              <div class="step-bar" aria-hidden="true"></div>
-              <h3>Algorithmic Scale</h3>
-              <p>We examine retention and cost per result at 48 hours. Kill what stutters; fuel what prints leads with budget.</p>
-              <span class="step-badge">DAY 04+</span>
-            </li>
+          <ol class="chain">
+            <li>10-sec film</li>
+            <li>WhatsApp campaign</li>
+            <li>Local audience</li>
           </ol>
         </div>
       </section>
 
-      <!-- SCENE 05: Interactive Package & ROI Calculator -->
-      <section class="block packages-section" id="packages" aria-labelledby="kicker-packages">
+      <section class="block" id="method" aria-labelledby="method-title">
         <div class="wrap">
-          <header class="sec-head reveal">
-            <div class="scene-slate">
-              <span class="scene-num">SCENE // 05</span>
-              <span class="scene-sep">/</span>
-              <span class="scene-title">COMMISSION TIERS</span>
-            </div>
-            <h2 id="kicker-packages">From Rs 2,000 to Rs 20,000+.</h2>
-            <p class="sec-desc">Choose a production tier to immediately configure your custom creative package and dispatch your brief to the studio.</p>
+          <header class="sec-head">
+            <p class="kicker">The method</p>
+            <h2 id="method-title">Idea, film, distribution, impact.</h2>
           </header>
+          <ol class="flow">
+            <li><span>01</span><strong>Idea</strong><p>What are we selling, in one sentence.</p></li>
+            <li><span>02</span><strong>Create</strong><p>AI makes the variations. A person chooses the cut.</p></li>
+            <li><span>03</span><strong>Launch</strong><p>Meta, Reels, WhatsApp. Where the customer already is.</p></li>
+            <li><span>04</span><strong>Measure</strong><p>Watched, or ignored. We look before we spend more.</p></li>
+            <li><span>05</span><strong>Kill / scale</strong><p>Stop what fails. Put money behind what holds.</p></li>
+          </ol>
+        </div>
+      </section>
 
-          <div class="packages-grid">
-            <!-- Tier 1 -->
-            <div class="pack-card reveal" data-pack="Rs 2,000" data-pack-title="Single Short Ad" data-pack-timeline="A few days" data-pack-deliverables="1 short ad for social, script hook, sound, WhatsApp format">
-              <div class="pack-badge">MICRO LAUNCH</div>
-              <div class="pack-price-row">
-                <span class="currency">Rs</span>
-                <span class="amount">2,000</span>
-              </div>
-              <h3>One Short Commercial</h3>
-              <p class="pack-desc">A single, lethal short-form ad (8–15 seconds) crafted specifically for mobile feeds, WhatsApp status, and Reels.</p>
-              <ul class="pack-features">
-                <li>✓ 1x 10–15s High-Retention Commercial</li>
-                <li>✓ AI Neural Visual Synthesis</li>
-                <li>✓ Professional Voice &amp; Sound Mix</li>
-                <li>✓ Turnaround: <strong>A few days</strong></li>
-              </ul>
-              <button class="pack-select-btn" type="button" data-order="One short commercial ad for my business." data-budget="Rs 2,000">
-                Select Package
+      <section class="block" id="packages" aria-labelledby="packages-title">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker">Packages</p>
+            <h2 id="packages-title">From Rs 2,000 to Rs 20,000+.</h2>
+          </header>
+          <ul class="packs">
+            <li>
+              <p class="price">Rs 2K</p>
+              <h3>One short ad</h3>
+              <p>A single film for a phone. About 8–20 seconds.</p>
+              <button class="order" type="button" data-order="One short ad for my business." data-budget="Rs 2,000">Get this</button>
+            </li>
+            <li>
+              <p class="price">Rs 5K</p>
+              <h3>3 variations</h3>
+              <p>Three cuts, so you can see which one people watch.</p>
+              <button class="order" type="button" data-order="Three creative variations for my business." data-budget="Rs 5,000">Get this</button>
+            </li>
+            <li>
+              <p class="price">Rs 10K</p>
+              <h3>Creative + campaign</h3>
+              <p>The film, plus a Meta or WhatsApp campaign around it.</p>
+              <button class="order" type="button" data-order="Creative and a campaign for my business." data-budget="Rs 10,000">Get this</button>
+            </li>
+            <li>
+              <p class="price">Rs 20K+</p>
+              <h3>Launch system</h3>
+              <p>Film, campaign, and direction for a full launch.</p>
+              <button class="order" type="button" data-order="A launch system for my business." data-budget="Rs 20,000+">Get this</button>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="block" id="why" aria-labelledby="why-title">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker">Why NĀMITRA</p>
+            <h2 id="why-title">Faster work. A human still decides.</h2>
+          </header>
+          <ul class="why">
+            <li><h3>Faster production</h3><p>From brief to first creative in days, not weeks.</p></li>
+            <li><h3>Built for local businesses</h3><p>Hyderabad-first. Shops, clinics, coaches, launches.</p></li>
+            <li><h3>Test before scaling</h3><p>The film is watched before serious media spend.</p></li>
+            <li><h3>AI-native production</h3><p>More variations. Faster iteration. Lower overhead.</p></li>
+            <li><h3>Human direction</h3><p>AI generates. Humans decide.</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="block studio" id="studio" aria-labelledby="studio-title">
+        <div class="wrap">
+          <p class="kicker">The studio</p>
+          <h2 id="studio-title">Kukatpally, Hyderabad</h2>
+          <p class="role">Director &amp; Founder</p>
+          <p class="founder">Bandaru Narendra Karunakar Babu</p>
+          <blockquote><p>“Every frame ignites a bigger tomorrow.”</p></blockquote>
+          <p class="close">Ideas into impact.</p>
+          <p class="signoff">Visual stories. Real impact.</p>
+        </div>
+      </section>
+
+      <section class="block" id="all-work" aria-labelledby="all-title">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker">All work</p>
+            <h2 id="all-title">The rest of the desk.</h2>
+          </header>
+          <div class="vault vault-rest">
+            <article>
+              <button class="frame tall" type="button" data-film data-src="videos/namitra-studio-vertical-reel.mp4" data-poster="videos/poster-namitra-reel.jpg" data-title="From Strategy to Real Impact" data-note="30-second vertical Reel. How a cut moves from the desk to a phone." aria-label="Play studio Reel, 30 seconds, vertical">
+                <img src="videos/poster-namitra-reel.jpg" alt="Vertical frame from the studio Reel">
+                <span class="play" aria-hidden="true"></span>
+                <span class="frame-card"><strong>Studio Reel</strong><span>30 sec · Vertical</span></span>
               </button>
-            </div>
-
-            <!-- Tier 2 (Featured) -->
-            <div class="pack-card featured reveal" data-pack="Rs 5,000" data-pack-title="3 Creative Variations Pack" data-pack-timeline="3 Days" data-pack-deliverables="3x Distinct Video Hooks, A/B Testing Matrix, Vertical & Square Cuts, WhatsApp Setup">
-              <div class="featured-ribbon">MOST POPULAR</div>
-              <div class="pack-badge">ALGORITHMIC TESTER</div>
-              <div class="pack-price-row">
-                <span class="currency">Rs</span>
-                <span class="amount">5,000</span>
-              </div>
-              <h3>3 Creative Variations</h3>
-              <p class="pack-desc">Three distinctly different visual hooks and story angles to split-test which message your customers actually respond to.</p>
-              <ul class="pack-features">
-                <li>✓ <strong>3x Unique Creative Cuts</strong> (Hooks A/B/C)</li>
-                <li>✓ 9:16 Vertical + 1:1 Feed Formats</li>
-                <li>✓ Three cuts you can run and compare</li>
-                <li>✓ Turnaround: <strong>3 Days</strong></li>
-              </ul>
-              <button class="pack-select-btn is-primary" type="button" data-order="Three creative variations for my business." data-budget="Rs 5,000">
-                Select Package
+            </article>
+            <article>
+              <button class="frame square" type="button" data-film data-src="videos/bahuvida-cinematic-action.mp4" data-poster="videos/poster-bahuvida-action.jpg" data-title="Canyon Railway and Aerial Drop" data-note="58-second action spot for social." aria-label="Play Canyon Railway, 58 seconds, action">
+                <img src="videos/poster-bahuvida-action.jpg" alt="Action frame from the canyon railway spot">
+                <span class="play" aria-hidden="true"></span>
+                <span class="frame-card"><strong>Canyon Railway</strong><span>58 sec · Action</span></span>
               </button>
-            </div>
-
-            <!-- Tier 3 -->
-            <div class="pack-card reveal" data-pack="Rs 10,000" data-pack-title="Creative + Performance Campaign" data-pack-timeline="5 Days" data-pack-deliverables="5x Commercial Cuts, Meta Ad Campaign Setup, WhatsApp Direct Funnel, 7-Day Ad Optimization">
-              <div class="pack-badge">GROWTH SYSTEM</div>
-              <div class="pack-price-row">
-                <span class="currency">Rs</span>
-                <span class="amount">10,000</span>
-              </div>
-              <h3>Creative + Ad Campaign</h3>
-              <p class="pack-desc">The complete performance machine. We produce the commercial films and actively run the Meta &amp; WhatsApp ad funnel for you.</p>
-              <ul class="pack-features">
-                <li>✓ 5x Polished AI Commercial Assets</li>
-                <li>✓ Full Meta Ads &amp; WhatsApp Campaign Setup</li>
-                <li>✓ Hyper-Local Audience Targeting (Hyderabad)</li>
-                <li>✓ Turnaround: <strong>5 Days</strong></li>
-              </ul>
-              <button class="pack-select-btn" type="button" data-order="Creative and a campaign for my business." data-budget="Rs 10,000">
-                Select Package
+            </article>
+            <article>
+              <button class="frame wide" type="button" data-film data-src="videos/luxury-estate-aerial-drone.mp4" data-poster="videos/poster-estate-drone.jpg" data-title="Topographic Agricultural Grandeur" data-note="10-second aerial. Scale before the line is spoken." aria-label="Play aerial estate film, 10 seconds">
+                <img src="videos/poster-estate-drone.jpg" alt="Drone view over orchard rows and an estate">
+                <span class="play" aria-hidden="true"></span>
+                <span class="frame-card"><strong>Aerial</strong><span>10 sec · Estate</span></span>
               </button>
-            </div>
-
-            <!-- Tier 4 -->
-            <div class="pack-card reveal" data-pack="Rs 20,000+" data-pack-title="Omnichannel Brand Engine" data-pack-timeline="7-10 Days" data-pack-deliverables="Full Omnichannel Suite: 60s Flagship Brand Film, 10x Social Reels, Omnichannel Meta/Google Setup, Director Advisory">
-              <div class="pack-badge">STUDIO FLAGSHIP</div>
-              <div class="pack-price-row">
-                <span class="currency">Rs</span>
-                <span class="amount">20,000+</span>
-              </div>
-              <h3>Omnichannel Launch Engine</h3>
-              <p class="pack-desc">For ambitious enterprises ready to own their category. Flagship brand film, a library of social Reels, and total media architecture.</p>
-              <ul class="pack-features">
-                <li>✓ 60s Flagship Cinematic Brand Film</li>
-                <li>✓ 10x High-Velocity Social Reels Library</li>
-                <li>✓ Comprehensive Funnel &amp; Retargeting System</li>
-                <li>✓ Director-Level Strategic Consultation</li>
-              </ul>
-              <button class="pack-select-btn" type="button" data-order="A full omnichannel launch system for my business." data-budget="Rs 20,000+">
-                Select Package
-              </button>
-            </div>
-          </div>
-
-          <!-- Dynamic Commission Customizer Output Box -->
-          <div class="calculator-summary-box reveal" id="calc-summary" aria-live="polite">
-            <div class="summary-left">
-              <span class="summary-label">ACTIVE SELECTION:</span>
-              <strong class="summary-pack" id="summary-pack-title">3 Creative Variations Pack (Rs 5,000)</strong>
-              <p class="summary-note" id="summary-pack-note">Three different cuts, so you can see which one people actually watch.</p>
-            </div>
-            <div class="summary-right">
-              <a class="cta cta-primary summary-action" id="summary-whatsapp-link" href="https://wa.me/919703556947?text=Hi%20N%C4%80MITRA%2C%20I%20want%20to%20book%20the%20Rs%205%2C000%20(3%20Creative%20Variations)%20package%20for%20my%20business." target="_blank" rel="noopener noreferrer">
-                <span>Lock In This Package on WhatsApp</span>
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- SCENE 06: The Studio & Founder Statement -->
-      <section class="block studio-section" id="studio" aria-labelledby="kicker-studio">
-        <div class="wrap">
-          <div class="studio-grid">
-            <div class="studio-copy reveal">
-              <div class="scene-slate">
-                <span class="scene-num">SCENE // 06</span>
-                <span class="scene-sep">/</span>
-                <span class="scene-title">THE ATELIER</span>
+      <section class="block" id="contact" aria-labelledby="contact-title">
+        <div class="wrap contact-grid">
+          <div>
+            <p class="kicker">Ready</p>
+            <h2 id="contact-title">Tell us what you’re selling.</h2>
+            <p class="lede">Send this on WhatsApp. We reply from the studio.</p>
+            <p class="more"><a class="cta cta-primary" href="https://wa.me/919703556947?text=Hi%20N%C4%80MITRA%2C%20I%20want%20an%20ad%20for%20my%20business.%0ABusiness%3A%0ALocation%3A%0AWhat%20I%20sell%3A%0ABudget%3A" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp NĀMITRA, opens WhatsApp">WhatsApp NĀMITRA</a></p>
+            <dl class="contacts">
+              <div>
+                <dt>WhatsApp</dt>
+                <dd><a href="https://wa.me/919703556947?text=Hi%20N%C4%80MITRA%2C%20I%20want%20an%20ad%20for%20my%20business.%0ABusiness%3A%0ALocation%3A%0AWhat%20I%20sell%3A%0ABudget%3A" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +91 9703556947, opens WhatsApp">+91 9703556947</a></dd>
               </div>
-              <h2 id="kicker-studio">Kukatpally, Hyderabad.</h2>
-              <div class="studio-founder-block">
-                <p class="role">DIRECTOR &amp; FOUNDER</p>
-                <p class="founder">Bandaru Narendra Karunakar Babu</p>
+              <div>
+                <dt>Email</dt>
+                <dd><a href="mailto:bandaru.karunakar@gmail.com">bandaru.karunakar@gmail.com</a></dd>
               </div>
-
-              <blockquote>
-                <p>“Every frame ignites a bigger tomorrow. Generative AI gives us velocity; human discernment gives us art.”</p>
-              </blockquote>
-
-              <p class="studio-text">
-                NĀMITRA Annonce was conceived on a single realization: the traditional advertising model is broken. Big agencies charge lakhs for weeks of meetings, producing videos that feel identical. We operate at the bleeding edge of AI generative synthesis, guided by an uncompromising standard of cinematic beauty and commercial psychology.
-              </p>
-
-              <div class="studio-badges">
-                <div class="s-badge">
-                  <span class="s-badge-val">17.4851° N</span>
-                  <span class="s-badge-lbl">KUKATPALLY</span>
-                </div>
-                <div class="s-badge">
-                  <span class="s-badge-val">EST. 2024</span>
-                  <span class="s-badge-lbl">HYDERABAD IN</span>
-                </div>
-                <div class="s-badge">
-                  <span class="s-badge-val">SOTA AI</span>
-                  <span class="s-badge-lbl">NEURAL ENGINE</span>
-                </div>
+              <div>
+                <dt>Instagram</dt>
+                <dd><a href="https://www.instagram.com/bnk_babu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @bnk_babu, opens Instagram">@bnk_babu</a></dd>
               </div>
-            </div>
-
-            <div class="studio-visual-card reveal" aria-hidden="true">
-              <div class="studio-frame">
-                <div class="studio-lens-graphic">
-                  <div class="concentric-ring r1"></div>
-                  <div class="concentric-ring r2"></div>
-                  <div class="concentric-ring r3"></div>
-                  <div class="lens-core-mark">
-                    <svg class="mark"><use href="#mark"></use></svg>
-                  </div>
-                </div>
-                <div class="studio-slate-data">
-                  <span>PROD: NĀMITRA ANNONCE</span>
-                  <span>ROLL: 01 // TAKE: 04</span>
-                  <span>FPS: 24.00 // HYDERABAD</span>
-                </div>
-              </div>
-            </div>
+            </dl>
           </div>
-        </div>
-      </section>
-
-      <!-- SCENE 07: Commission Terminal (Interactive Contact & Brief) -->
-      <section class="block brief-section" id="contact" aria-labelledby="kicker-contact">
-        <div class="wrap">
-          <header class="sec-head reveal">
-            <div class="scene-slate">
-              <span class="scene-num">SCENE // 07</span>
-              <span class="scene-sep">/</span>
-              <span class="scene-title">DISPATCH BRIEF</span>
-            </div>
-            <h2 id="kicker-contact">Tell us what you’re selling.</h2>
-            <p class="sec-desc">Fill out your parameters below. Our studio form compiles a structured brief and opens directly in WhatsApp for an instant response.</p>
-          </header>
-
-          <div class="contact-grid">
-            <div class="contact-info-col reveal">
-              <p class="lede">
-                Direct studio communication. We don’t route you to customer care bots; you speak directly with the creative direction team.
-              </p>
-
-              <div class="direct-wa-box">
-                <span class="wa-status-dot" aria-hidden="true"></span>
-                <div>
-                  <strong>Direct WhatsApp Line:</strong>
-                  <p>Immediate response during studio hours (9:00 AM – 9:00 PM IST)</p>
-                </div>
-              </div>
-
-              <p class="more-link">
-                <a class="cta cta-primary" href="https://wa.me/919703556947?text=Hi%20N%C4%80MITRA%2C%20I%20want%20an%20ad%20for%20my%20business.%0ABusiness%3A%0ALocation%3A%0AWhat%20I%20sell%3A%0ABudget%3A" target="_blank" rel="noopener noreferrer" aria-label="Direct WhatsApp message to NĀMITRA">
-                  <span>Message NĀMITRA on WhatsApp</span>
-                  <span aria-hidden="true">→</span>
-                </a>
-              </p>
-
-              <dl class="contacts">
-                <div>
-                  <dt>WhatsApp Hotline</dt>
-                  <dd><a class="link" href="https://wa.me/919703556947?text=Hi%20N%C4%80MITRA%2C%20I%20want%20to%20commission%20an%20ad." target="_blank" rel="noopener noreferrer">+91 9703556947</a></dd>
-                </div>
-                <div>
-                  <dt>Executive Email</dt>
-                  <dd><a class="link" href="mailto:bandaru.karunakar@gmail.com">bandaru.karunakar@gmail.com</a></dd>
-                </div>
-                <div>
-                  <dt>Instagram</dt>
-                  <dd><a class="link" href="https://www.instagram.com/bnk_babu/" target="_blank" rel="noopener noreferrer">@bnk_babu</a></dd>
-                </div>
-                <div>
-                  <dt>Physical Studio Location</dt>
-                  <dd>Kukatpally, Hyderabad, Telangana 500072, India</dd>
-                </div>
-              </dl>
-            </div>
-
-            <!-- SOTA Commission Form -->
-            <form class="brief-form reveal" id="brief-form" action="https://wa.me/919703556947" method="get">
-              <div class="form-header">
-                <h3>COMMISSION BRIEF TERMINAL</h3>
-                <span class="form-tag">OPENS WHATSAPP</span>
-              </div>
-
-              <label class="field">
-                <span>Your Name / Title *</span>
-                <input id="brief-name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="e.g. Narendra Babu" aria-describedby="brief-name-error">
-                <p class="field-error" id="brief-name-error"></p>
-              </label>
-
-              <label class="field">
-                <span>Business / Brand Name *</span>
-                <input id="brief-business" name="business" type="text" required maxlength="80" placeholder="e.g. City Medicals Kukatpally" aria-describedby="brief-business-error">
-                <p class="field-error" id="brief-business-error"></p>
-              </label>
-
-              <label class="field">
-                <span>Location / City *</span>
-                <input id="brief-location" name="location" type="text" required maxlength="80" placeholder="e.g. Kukatpally, Hyderabad" aria-describedby="brief-location-error">
-                <p class="field-error" id="brief-location-error"></p>
-              </label>
-
-              <label class="field">
-                <span>What are you selling? (Product / Service) *</span>
-                <input id="brief-sell" name="sell" type="text" required maxlength="160" placeholder="e.g. Fast medicine deliveries via WhatsApp" aria-describedby="brief-sell-error">
-                <p class="field-error" id="brief-sell-error"></p>
-              </label>
-
-              <label class="field">
-                <span>Target Budget / Chosen Package</span>
-                <input id="brief-budget" name="budget" type="text" maxlength="40" placeholder="e.g. Rs 5,000 (3 Variations)" aria-describedby="brief-budget-error">
-                <p class="field-error" id="brief-budget-error"></p>
-              </label>
-
-              <button class="submit" type="submit">
-                <span>Compile Brief &amp; Send to WhatsApp</span>
-                <span aria-hidden="true">→</span>
-              </button>
-              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-            </form>
-          </div>
+          <form id="brief-form" action="https://wa.me/919703556947" method="get">
+            <label class="field">
+              <span>Name</span>
+              <input id="brief-name" name="name" type="text" autocomplete="name" required maxlength="80" aria-describedby="brief-name-error">
+              <p class="field-error" id="brief-name-error"></p>
+            </label>
+            <label class="field">
+              <span>Business</span>
+              <input id="brief-business" name="business" type="text" required maxlength="80" aria-describedby="brief-business-error">
+              <p class="field-error" id="brief-business-error"></p>
+            </label>
+            <label class="field">
+              <span>Location</span>
+              <input id="brief-location" name="location" type="text" required maxlength="80" aria-describedby="brief-location-error">
+              <p class="field-error" id="brief-location-error"></p>
+            </label>
+            <label class="field">
+              <span>What you sell</span>
+              <input id="brief-sell" name="sell" type="text" required maxlength="160" aria-describedby="brief-sell-error">
+              <p class="field-error" id="brief-sell-error"></p>
+            </label>
+            <label class="field">
+              <span>Budget</span>
+              <input id="brief-budget" name="budget" type="text" maxlength="40">
+            </label>
+            <button class="submit" type="submit">Send brief</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="wrap footer-inner">
         <div class="lockup">
           <svg class="mark" aria-hidden="true"><use href="#mark"></use></svg>
           <div>
             <p class="lockup-name">NĀMITRA</p>
-            <p class="lockup-annonce">A N N O N C E</p>
-            <p class="lockup-sub">AI VELOCITY · HUMAN DIRECTION · PRESTIGE IMPACT</p>
+            <p class="lockup-annonce">Annonce</p>
+            <p class="lockup-sub">Ignites. Framed. Advertise.</p>
           </div>
         </div>
-
         <ul class="footer-contacts">
           <li><a href="tel:+919703556947">+91 9703556947</a></li>
           <li><a href="mailto:bandaru.karunakar@gmail.com">bandaru.karunakar@gmail.com</a></li>
-          <li><a href="https://www.instagram.com/bnk_babu/" target="_blank" rel="noopener noreferrer">@bnk_babu</a></li>
+          <li><a href="https://www.instagram.com/bnk_babu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @bnk_babu, opens Instagram">@bnk_babu</a></li>
         </ul>
-
-        <p class="footer-creed">© <span id="year-copy">2026</span> NĀMITRA Annonce. Kukatpally, Hyderabad, India. All rights reserved.</p>
       </div>
     </footer>
   </div>
 
-  <!-- Mobile Floating Action Bar -->
-  <nav class="dock" aria-label="Mobile Navigation Dock">
-    <a href="https://wa.me/919703556947?text=Hi%20N%C4%80MITRA%2C%20I%20want%20an%20ad%20for%20my%20business." target="_blank" rel="noopener noreferrer">
-      <span class="dock-icon">💬</span> WhatsApp
-    </a>
-    <a href="#contact">
-      <span class="dock-icon">⚡</span> Get An Ad
-    </a>
-    <a href="#work">
-      <span class="dock-icon">🎬</span> Films
-    </a>
+  <nav class="dock" aria-label="Order">
+    <a href="https://wa.me/919703556947?text=Hi%20N%C4%80MITRA%2C%20I%20want%20an%20ad%20for%20my%20business.%0ABusiness%3A%0ALocation%3A%0AWhat%20I%20sell%3A%0ABudget%3A" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp, opens WhatsApp">WhatsApp</a>
+    <a href="#contact">Get an ad</a>
+    <a href="#work">Films</a>
   </nav>
 
-  <!-- Preferences & Studio Settings Drawer -->
   <div class="settings" id="settings" hidden role="dialog" aria-modal="true" aria-labelledby="settings-title">
     <div class="settings-sheet">
       <div class="settings-bar">
-        <h2 id="settings-title">Studio Settings</h2>
-        <button type="button" id="settings-close" aria-label="Close settings">Close [✕]</button>
+        <h2 id="settings-title">Settings</h2>
+        <button type="button" id="settings-close" aria-label="Close settings">Close</button>
       </div>
-      <p class="settings-sub">Customize the studio rendering engine and viewport telemetry.</p>
-
       <fieldset>
-        <legend>Aesthetic Theme</legend>
-        <label><input type="radio" name="theme" value="cinema"> Cinema Obsidian (Default)</label>
-        <label><input type="radio" name="theme" value="paper"> Studio Paper (Light)</label>
-        <label><input type="radio" name="theme" value="system"> System Match</label>
+        <legend>Theme</legend>
+        <label><input type="radio" name="theme" value="cinema"> Cinema</label>
+        <label><input type="radio" name="theme" value="paper"> Paper</label>
+        <label><input type="radio" name="theme" value="system"> System</label>
       </fieldset>
-
       <fieldset>
-        <legend>3D WebGL Visualization</legend>
-        <label><input type="radio" name="camera" value="on"> Hardware Accelerated (On)</label>
-        <label><input type="radio" name="camera" value="off"> 2D Static (Off)</label>
+        <legend>Motion</legend>
+        <label><input type="radio" name="motion" value="full"> Full</label>
+        <label><input type="radio" name="motion" value="reduced"> Reduced</label>
+        <label><input type="radio" name="motion" value="auto"> Auto</label>
       </fieldset>
-
       <fieldset>
-        <legend>Acoustic &amp; Sound FX</legend>
-        <label><input type="radio" name="sound" value="on"> Cinematic Synthesized Audio</label>
-        <label><input type="radio" name="sound" value="off"> Mute All Sound</label>
+        <legend>Text size</legend>
+        <label><input type="radio" name="size" value="s"> S</label>
+        <label><input type="radio" name="size" value="m"> M</label>
+        <label><input type="radio" name="size" value="l"> L</label>
+        <label><input type="radio" name="size" value="xl"> XL</label>
       </fieldset>
-
       <fieldset>
-        <legend>Motion &amp; Transitions</legend>
-        <label><input type="radio" name="motion" value="full"> Full Cinema Dynamics</label>
-        <label><input type="radio" name="motion" value="reduced"> Reduced Motion (Instant)</label>
-        <label><input type="radio" name="motion" value="auto"> Auto System Preference</label>
+        <legend>Contrast</legend>
+        <label><input type="radio" name="contrast" value="standard"> Standard</label>
+        <label><input type="radio" name="contrast" value="high"> High</label>
       </fieldset>
-
       <fieldset>
-        <legend>Viewfinder Cursor</legend>
-        <label><input type="radio" name="cursor" value="studio"> Studio Focus Reticle</label>
-        <label><input type="radio" name="cursor" value="system"> Standard OS Pointer</label>
+        <legend>Cursor</legend>
+        <label><input type="radio" name="cursor" value="studio"> Studio ring</label>
+        <label><input type="radio" name="cursor" value="system"> System</label>
       </fieldset>
-
       <fieldset>
-        <legend>Film Grain Overlay</legend>
-        <label><input type="radio" name="grain" value="on"> Active 35mm Grain</label>
-        <label><input type="radio" name="grain" value="off"> Clean Digital</label>
+        <legend>Grain</legend>
+        <label><input type="radio" name="grain" value="on"> On</label>
+        <label><input type="radio" name="grain" value="off"> Off</label>
       </fieldset>
-
       <fieldset>
-        <legend>Typography Scale</legend>
-        <label><input type="radio" name="size" value="s"> Compact (S)</label>
-        <label><input type="radio" name="size" value="m"> Standard (M)</label>
-        <label><input type="radio" name="size" value="l"> Editorial Large (L)</label>
+        <legend>Camera</legend>
+        <label><input type="radio" name="camera" value="on"> On</label>
+        <label><input type="radio" name="camera" value="off"> Off</label>
       </fieldset>
-
-      <p class="settings-note">Preferences are cached locally on your device.</p>
+      <fieldset>
+        <legend>Language</legend>
+        <label><input type="radio" name="lang" value="en" checked> English</label>
+        <label><input type="radio" name="lang" value="te" disabled> Telugu <span class="soon">Soon</span></label>
+        <label><input type="radio" name="lang" value="hi" disabled> Hindi <span class="soon">Soon</span></label>
+      </fieldset>
+      <p class="settings-note">Preferences stay on this device.</p>
     </div>
   </div>
 
-  <!-- SOTA Fullscreen Theatre Modal -->
-  <div class="player" id="player" hidden>
-    <div class="player-sheet" role="dialog" aria-modal="true" aria-labelledby="player-title">
-      <div class="player-top-bar">
-        <div class="player-meta-badges">
-          <span class="p-badge">4K MASTER</span>
-          <span class="p-badge">24 FPS</span>
-          <span class="p-badge" id="player-aspect-badge">16:9</span>
-        </div>
-        <button class="player-close" id="player-close" type="button" aria-label="Close Theatre">Close [✕]</button>
-      </div>
-      <div class="player-video-box">
-        <video id="player-video" controls playsinline preload="none"></video>
-      </div>
-      <div class="player-details">
-        <h2 id="player-title"></h2>
-        <p id="player-note" class="player-note"></p>
-        <div class="player-actions">
-          <a class="cta cta-primary" id="player-commission-btn" href="#contact">Commission Similar Ad →</a>
-        </div>
-      </div>
+  <div class="player" id="player" hidden role="dialog" aria-modal="true" aria-labelledby="player-title">
+    <div class="player-sheet">
+      <button class="player-close" id="player-close" type="button">Close</button>
+      <h2 id="player-title"></h2>
+      <video id="player-video" controls playsinline preload="none" aria-describedby="player-note"></video>
+      <p id="player-note" class="player-note"></p>
     </div>
   </div>
-
-  <!-- Three.js (Local Self-Contained Engine with CDN Fallback) -->
-  <script src="js/three.min.js"></script>
-  <script>
-    if (typeof THREE === "undefined") {
-      // In case local file was blocked, load from Cloudflare CDN
-      var s = document.createElement("script");
-      s.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-      document.head.appendChild(s);
-    }
-  </script>
   <script src="js/site.js"></script>
 </body>
 </html>

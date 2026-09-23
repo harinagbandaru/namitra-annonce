@@ -206,6 +206,8 @@
     if (!player || !playerVideo) return;
     filmOpener = button;
     playerTitle.textContent = button.getAttribute("data-title") || "";
+    var note = document.getElementById("player-note");
+    if (note) note.textContent = button.getAttribute("data-note") || "";
     playerVideo.poster = button.getAttribute("data-poster") || "";
     playerVideo.src = button.getAttribute("data-src") || "";
     player.hidden = false;
@@ -247,11 +249,13 @@
 
   document.querySelectorAll("[data-order]").forEach(function (button) {
     button.addEventListener("click", function () {
-      var line = document.getElementById("brief-line");
-      if (line) {
-        line.value = button.getAttribute("data-order") || "";
-        line.removeAttribute("aria-invalid");
+      var sell = document.getElementById("brief-sell");
+      var budget = document.getElementById("brief-budget");
+      if (sell) {
+        sell.value = button.getAttribute("data-order") || "";
+        sell.removeAttribute("aria-invalid");
       }
+      if (budget && button.getAttribute("data-budget")) budget.value = button.getAttribute("data-budget");
       var contact = document.getElementById("contact");
       if (contact) contact.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
       var name = document.getElementById("brief-name");
@@ -386,30 +390,39 @@
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     var name = clean(form.name.value);
-    var area = clean(form.area.value);
-    var brief = clean(form.brief.value);
+    var business = clean(form.business.value);
+    var location = clean(form.location.value);
+    var sell = clean(form.sell.value);
+    var budget = clean(form.budget.value);
     form.name.value = name;
-    form.area.value = area;
-    form.brief.value = brief;
+    form.business.value = business;
+    form.location.value = location;
+    form.sell.value = sell;
+    form.budget.value = budget;
     var bad = false;
     if (!name) { fieldError(form.name, "Enter your name."); bad = true; }
     else fieldError(form.name, "");
-    if (!area) { fieldError(form.area, "Enter your area of Hyderabad."); bad = true; }
-    else fieldError(form.area, "");
-    if (!brief) { fieldError(form.brief, "Enter a one-line brief."); bad = true; }
-    else fieldError(form.brief, "");
+    if (!business) { fieldError(form.business, "Enter the business name."); bad = true; }
+    else fieldError(form.business, "");
+    if (!location) { fieldError(form.location, "Enter the location."); bad = true; }
+    else fieldError(form.location, "");
+    if (!sell) { fieldError(form.sell, "Say what you sell."); bad = true; }
+    else fieldError(form.sell, "");
     if (bad) {
       if (status) status.textContent = "Add the missing lines, then send.";
       if (!name) form.name.focus();
-      else if (!area) form.area.focus();
-      else form.brief.focus();
+      else if (!business) form.business.focus();
+      else if (!location) form.location.focus();
+      else form.sell.focus();
       return;
     }
     var text = [
-      "NĀMITRA Annonce — brief",
-      "Name: " + name,
-      "Area: " + area,
-      "Brief: " + brief
+      "Hi NĀMITRA, I want an ad for my business.",
+      "Business: " + business,
+      "Location: " + location,
+      "What I sell: " + sell,
+      "Budget: " + budget,
+      "Name: " + name
     ].join("\n");
     var url = "https://wa.me/919703556947?text=" + encodeURIComponent(text);
     if (status) {

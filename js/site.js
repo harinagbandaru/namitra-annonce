@@ -25,8 +25,7 @@
     root.setAttribute("data-size", prefs.size || "m");
     root.setAttribute("data-grain", prefs.grain === "off" || reduce ? "off" : "on");
     root.setAttribute("data-cursor", prefs.cursor === "system" ? "system" : "studio");
-    var coarse = matchMedia("(pointer: coarse)").matches;
-    var camera = reduce ? false : prefs.camera === "off" ? false : prefs.camera === "on" ? true : !coarse;
+    var camera = reduce ? false : prefs.camera !== "off";
     root.setAttribute("data-camera", camera ? "on" : "off");
     return reduce;
   }
@@ -80,8 +79,7 @@
 
   var cursor = document.getElementById("cursor");
   if (cursor && fine) {
-    document.body.classList.add("use-cursor");
-    window.addEventListener("mousemove", function (event) {
+    window.addEventListener("pointermove", function (event) {
       if (root.getAttribute("data-cursor") === "system") {
         document.body.classList.remove("use-cursor");
         cursor.classList.remove("is-on");
@@ -90,9 +88,12 @@
       document.body.classList.add("use-cursor");
       cursor.style.transform = "translate3d(" + event.clientX + "px," + event.clientY + "px,0)";
       cursor.classList.add("is-on");
-      var typing = event.target.closest && event.target.closest("input, textarea, .player, .settings");
+      var hot = event.target.closest && event.target.closest("a, button");
+      var typing = event.target.closest && event.target.closest("input, textarea");
+      cursor.classList.toggle("is-hot", Boolean(hot) && !typing);
       cursor.classList.toggle("is-hidden", Boolean(typing));
     }, { passive: true });
+    document.documentElement.addEventListener("mouseleave", function () { cursor.classList.remove("is-on"); });
   }
 
   var rig = document.getElementById("rig");
@@ -183,10 +184,33 @@
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   }
 
+  var menuToggle = document.getElementById("menu-toggle");
+  var menuPanel = document.getElementById("menu-panel");
+  function closeMenu() {
+    if (!menuPanel) return;
+    menuPanel.classList.remove("is-open");
+    if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("menu-open");
+  }
+  if (menuToggle && menuPanel) {
+    menuToggle.addEventListener("click", function () {
+      var open = menuPanel.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      menuToggle.textContent = open ? "Close" : "Menu";
+      document.body.classList.toggle("menu-open", open);
+    });
+    menuPanel.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+
   function openSettings() {
+    if (!done && entry && !entry.hidden) finishEntry();
+    closeMenu();
     opener = document.getElementById("settings-open");
     settingsEl.hidden = false;
     settingsEl.inert = false;
+    if (page) page.inert = false;
     if (opener) opener.setAttribute("aria-expanded", "true");
     var close = document.getElementById("settings-close");
     if (close) close.focus();
@@ -226,6 +250,7 @@
 
   document.addEventListener("keydown", function (event) {
     if (event.key !== "Escape") return;
+    if (menuPanel && menuPanel.classList.contains("is-open")) { closeMenu(); return; }
     if (settingsEl && !settingsEl.hidden) { event.preventDefault(); closeSettings(); return; }
     if (player && !player.hidden) { closeFilm(); return; }
     if (!done) finishEntry();
@@ -315,4 +340,105 @@
     if (opened) opened.opener = null;
     else window.location.href = url;
   });
+
+  var rises = document.querySelectorAll(".rise");
+  if (reduce || !("IntersectionObserver" in window)) {
+    rises.forEach(function (node) { node.classList.add("is-in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add("is-in");
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    rises.forEach(function (node) { io.observe(node); });
+  }
+
+  var stage = document.getElementById("stage");
+  var sculpture = document.querySelector(".sculpture");
+  if (stage && sculpture && window.THREE) {
+    try {
+      var renderer = new THREE.WebGLRenderer({ canvas: stage, alpha: true, antialias: true });
+      renderer.setClearColor(0x000000, 0);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      var scene = new THREE.Scene();
+      var cam3 = new THREE.PerspectiveCamera(30, 1, 0.1, 40);
+      cam3.position.set(0, 0.15, 8.4);
+      var goldMat = new THREE.MeshStandardMaterial({ color: 0xE8D5A3, metalness: 0.72, roughness: 0.28 });
+      var darkMat = new THREE.MeshStandardMaterial({ color: 0x14080C, metalness: 0.5, roughness: 0.4 });
+      var group = new THREE.Group();
+      var body = new THREE.Mesh(new THREE.BoxGeometry(3.3, 1.75, 1.45), goldMat);
+      group.add(body);
+      var lens = new THREE.Mesh(new THREE.CylinderGeometry(0.58, 0.66, 0.85, 40), darkMat);
+      lens.rotation.x = Math.PI / 2;
+      lens.position.set(-0.35, 0.02, 1.05);
+      group.add(lens);
+      var bezel = new THREE.Mesh(new THREE.TorusGeometry(0.6, 0.055, 14, 40), goldMat);
+      bezel.position.set(-0.35, 0.02, 1.42);
+      group.add(bezel);
+      var glass = new THREE.Mesh(new THREE.CircleGeometry(0.36, 28), new THREE.MeshStandardMaterial({ color: 0x0B0708, metalness: 0.85, roughness: 0.12 }));
+      glass.position.set(-0.35, 0.02, 1.48);
+      group.add(glass);
+      var top = new THREE.Mesh(new THREE.BoxGeometry(1.35, 0.32, 0.85), goldMat);
+      top.position.set(-0.15, 1.02, 0);
+      group.add(top);
+      var finder = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.42, 0.28), darkMat);
+      finder.position.set(0.85, 0.15, 0.78);
+      group.add(finder);
+      var foot = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.16, 0.85), goldMat);
+      foot.position.set(0, -1.55, 0);
+      group.add(foot);
+      var neck = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.62, 0.32), new THREE.MeshStandardMaterial({ color: 0x6B1322, metalness: 0.3, roughness: 0.5 }));
+      neck.position.set(0, -1.15, 0);
+      group.add(neck);
+      scene.add(group);
+      scene.add(new THREE.AmbientLight(0xfff6e4, 0.55));
+      var keyLight = new THREE.DirectionalLight(0xfff3d2, 1.25);
+      keyLight.position.set(4, 5, 6);
+      scene.add(keyLight);
+      var fill = new THREE.DirectionalLight(0x6B1322, 0.35);
+      fill.position.set(-4, 1, 2);
+      scene.add(fill);
+      sculpture.classList.add("is-webgl");
+      var webglOn = true;
+      var aimX = 0, aimY = 0, curX = 0, curY = 0;
+      function fit() {
+        var w = stage.clientWidth || 420;
+        var h = stage.clientHeight || 280;
+        renderer.setSize(w, h, false);
+        cam3.aspect = w / h;
+        cam3.updateProjectionMatrix();
+      }
+      fit();
+      window.addEventListener("resize", fit);
+      if (fine) {
+        window.addEventListener("pointermove", function (event) {
+          aimX = (event.clientX / window.innerWidth - 0.5) * 0.7;
+          aimY = (event.clientY / window.innerHeight - 0.5) * -0.35;
+        }, { passive: true });
+      }
+      (function draw(now) {
+        var on = root.getAttribute("data-camera") === "on" && root.getAttribute("data-motion") !== "reduced";
+        if (on !== webglOn) {
+          webglOn = on;
+          sculpture.classList.toggle("is-webgl", on);
+        }
+        if (!on) { requestAnimationFrame(draw); return; }
+        if (fine) {
+          curX += (aimX - curX) * 0.06;
+          curY += (aimY - curY) * 0.06;
+        } else {
+          curX = Math.sin(now * 0.00035) * 0.35;
+          curY = 0.08;
+        }
+        group.rotation.y = curX;
+        group.rotation.x = 0.08 + curY;
+        renderer.render(scene, cam3);
+        requestAnimationFrame(draw);
+      })(0);
+    } catch (err) {
+      sculpture.classList.remove("is-webgl");
+    }
+  }
 })();

@@ -39,7 +39,7 @@
     root.setAttribute("data-size", prefs.size || "m");
     root.setAttribute("data-grain", (prefs.grain === "off" || reduce) ? "off" : "on");
     root.setAttribute("data-cursor", prefs.cursor === "system" ? "system" : "studio");
-    var camera = reduce ? false : prefs.camera === "off" ? false : prefs.camera === "on" ? true : !matchMedia("(pointer: coarse)").matches;
+    var camera = reduce ? false : prefs.camera === "off" ? false : true;
     root.setAttribute("data-camera", camera ? "on" : "off");
   })();
   </script>
@@ -117,16 +117,29 @@
     <button class="entry-skip" id="skip-entry" type="button">Skip</button>
   </div>
 
+  <header class="menu">
+    <a class="menu-brand" href="#hero">NĀMITRA</a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel">Menu</button>
+    <nav class="menu-panel" id="menu-panel" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#method">Method</a>
+      <a href="#packages">Prices</a>
+      <a href="#studio">Studio</a>
+      <a href="#contact">Brief</a>
+      <button class="settings-open" id="settings-open" type="button" aria-haspopup="dialog" aria-controls="settings" aria-expanded="false">Settings</button>
+    </nav>
+  </header>
+
   <div id="page">
-    <nav class="rail" aria-label="Studio">
+    <nav class="rail" aria-label="Studio mark">
       <svg class="mark" aria-hidden="true"><use href="#mark"></use></svg>
       <p class="rail-creed">Story · Strategy · Impact</p>
-      <button class="settings-open" id="settings-open" type="button" aria-haspopup="dialog" aria-controls="settings" aria-expanded="false">Settings</button>
     </nav>
 
     <header class="hero" id="hero" tabindex="-1" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
-        <div class="hero-copy">
+        <div class="hero-copy rise">
           <p class="mast">
             <span class="mast-name">NĀMITRA</span>
             <span class="mast-dot" aria-hidden="true">·</span>
@@ -142,7 +155,8 @@
           </div>
           <p class="trust">Based in Hyderabad · AI-native production · A person still decides</p>
         </div>
-        <div class="sculpture" aria-hidden="true">
+        <div class="sculpture rise" aria-hidden="true">
+          <canvas id="stage"></canvas>
           <div class="rig" id="rig">
             <svg class="cam" viewBox="0 0 460 300">
               <defs>
@@ -177,7 +191,7 @@
     </header>
 
     <main id="main">
-      <section class="block" id="work" aria-labelledby="work-title">
+      <section class="block rise" id="work" aria-labelledby="work-title">
         <div class="wrap">
           <header class="sec-head">
             <p class="kicker" id="work-kicker">Selected work</p>
@@ -210,7 +224,7 @@
         </div>
       </section>
 
-      <section class="block" id="services" aria-labelledby="services-title">
+      <section class="block rise" id="services" aria-labelledby="services-title">
         <div class="wrap">
           <header class="sec-head">
             <p class="kicker">What we do</p>
@@ -246,7 +260,7 @@
         </div>
       </section>
 
-      <section class="block" id="before" aria-labelledby="before-title">
+      <section class="block rise" id="before" aria-labelledby="before-title">
         <div class="wrap">
           <header class="sec-head">
             <p class="kicker">Before → after</p>
@@ -270,7 +284,7 @@
         </div>
       </section>
 
-      <section class="block" id="method" aria-labelledby="method-title">
+      <section class="block rise" id="method" aria-labelledby="method-title">
         <div class="wrap">
           <header class="sec-head">
             <p class="kicker">The method</p>
@@ -286,42 +300,43 @@
         </div>
       </section>
 
-      <section class="block" id="packages" aria-labelledby="packages-title">
+      <section class="block rise" id="packages" aria-labelledby="packages-title">
         <div class="wrap">
           <header class="sec-head">
             <p class="kicker">Packages</p>
-            <h2 id="packages-title">From Rs 2,000 to Rs 20,000+.</h2>
+            <h2 id="packages-title">From Rs 15,000 to Rs 65,000+.</h2>
           </header>
           <ul class="packs">
             <li>
-              <p class="price">Rs 2K</p>
+              <p class="price">Rs 15,000</p>
               <h3>One short ad</h3>
-              <p>A single film for a phone. About 8–20 seconds.</p>
-              <button class="order" type="button" data-order="One short ad for my business." data-budget="Rs 2,000">Get this</button>
+              <p>A single film for a phone. About 8–20 seconds. One revision.</p>
+              <button class="order" type="button" data-order="One short ad for my business." data-budget="Rs 15,000">Get this</button>
             </li>
             <li>
-              <p class="price">Rs 5K</p>
+              <p class="price">Rs 28,000</p>
               <h3>3 variations</h3>
-              <p>Three cuts, so you can see which one people watch.</p>
-              <button class="order" type="button" data-order="Three creative variations for my business." data-budget="Rs 5,000">Get this</button>
+              <p>One brief, three cuts, so you can see which one people watch.</p>
+              <button class="order" type="button" data-order="Three creative variations for my business." data-budget="Rs 28,000">Get this</button>
             </li>
             <li>
-              <p class="price">Rs 10K</p>
+              <p class="price">Rs 35,000</p>
               <h3>Creative + campaign</h3>
-              <p>The film, plus a Meta or WhatsApp campaign around it.</p>
-              <button class="order" type="button" data-order="Creative and a campaign for my business." data-budget="Rs 10,000">Get this</button>
+              <p>The film, plus the Meta or WhatsApp campaign around it. Ad spend is separate.</p>
+              <button class="order" type="button" data-order="Creative and a campaign for my business." data-budget="Rs 35,000">Get this</button>
             </li>
             <li>
-              <p class="price">Rs 20K+</p>
+              <p class="price">Rs 65,000+</p>
               <h3>Launch system</h3>
-              <p>Film, campaign, and direction for a full launch.</p>
-              <button class="order" type="button" data-order="A launch system for my business." data-budget="Rs 20,000+">Get this</button>
+              <p>Film, cutdowns, campaign, and direction through the launch.</p>
+              <button class="order" type="button" data-order="A launch system for my business." data-budget="Rs 65,000+">Get this</button>
             </li>
           </ul>
+          <p class="fee-note">Fees cover direction, production, and one revision. Media spend is extra. Set so the studio can deliver and stay open.</p>
         </div>
       </section>
 
-      <section class="block" id="why" aria-labelledby="why-title">
+      <section class="block rise" id="why" aria-labelledby="why-title">
         <div class="wrap">
           <header class="sec-head">
             <p class="kicker">Why NĀMITRA</p>
@@ -349,7 +364,7 @@
         </div>
       </section>
 
-      <section class="block" id="all-work" aria-labelledby="all-title">
+      <section class="block rise" id="all-work" aria-labelledby="all-title">
         <div class="wrap">
           <header class="sec-head">
             <p class="kicker">All work</p>
@@ -381,7 +396,7 @@
         </div>
       </section>
 
-      <section class="block" id="contact" aria-labelledby="contact-title">
+      <section class="block rise" id="contact" aria-labelledby="contact-title">
         <div class="wrap contact-grid">
           <div>
             <p class="kicker">Ready</p>
@@ -523,6 +538,7 @@
       <p id="player-note" class="player-note"></p>
     </div>
   </div>
+  <script src="js/three.min.js"></script>
   <script src="js/site.js"></script>
 </body>
 </html>

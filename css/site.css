@@ -2501,11 +2501,12 @@ html[data-theme="paper"] {
   --void: #F6F1E8;
   --surface: #EEE7DB;
   --surface-2: #E5DDCF;
-  --surface-glass: rgba(238, 231, 219, 0.85);
-  --surface-border: rgba(74, 14, 24, 0.25);
+  --surface-glass: rgba(238, 231, 219, 0.88);
+  --surface-border: rgba(74, 14, 24, 0.22);
   --surface-border-subtle: rgba(74, 14, 24, 0.12);
   --ivory: #2A0810;
   --ivory-muted: #5C1926;
+  --ivory-faint: rgba(74, 14, 24, 0.45);
   --gold: #731A2D;
   --gold-2: #4A0E18;
   --gold-dark: #8A2A3E;
@@ -2513,11 +2514,75 @@ html[data-theme="paper"] {
 }
 html[data-theme="paper"] body { background: var(--void); color: var(--ivory); }
 html[data-theme="paper"] .vignette {
-  background: radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(74, 14, 24, 0.15) 100%);
+  background: radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(74, 14, 24, 0.12) 100%);
 }
-html[data-theme="paper"] .hud { background: rgba(246, 241, 232, 0.9); }
+html[data-theme="paper"] .hud { background: rgba(246, 241, 232, 0.92); border-bottom-color: var(--surface-border); }
 html[data-theme="paper"] .stage-3d-wrapper {
-  background: radial-gradient(circle at center, rgba(115, 26, 45, 0.12) 0%, #EEE7DB 80%);
+  background: radial-gradient(circle at center, rgba(115, 26, 45, 0.1) 0%, #EEE7DB 80%);
+}
+html[data-theme="paper"] .metric-card,
+html[data-theme="paper"] .discipline-card,
+html[data-theme="paper"] .transform-card,
+html[data-theme="paper"] .protocol-step,
+html[data-theme="paper"] .pack-card,
+html[data-theme="paper"] .brief-form,
+html[data-theme="paper"] .studio-frame {
+  background: #EFE9DE;
+  border-color: rgba(74, 14, 24, 0.2);
+}
+html[data-theme="paper"] .metric-card:hover,
+html[data-theme="paper"] .discipline-card:hover,
+html[data-theme="paper"] .pack-card:hover,
+html[data-theme="paper"] .protocol-step:hover {
+  border-color: #731A2D;
+}
+html[data-theme="paper"] .metric-val,
+html[data-theme="paper"] .discipline-card h3,
+html[data-theme="paper"] .protocol-step h3,
+html[data-theme="paper"] .pack-price-row .amount,
+html[data-theme="paper"] .pack-card h3,
+html[data-theme="paper"] .founder,
+html[data-theme="paper"] .summary-pack {
+  color: #4A0E18;
+}
+html[data-theme="paper"] .calculator-summary-box {
+  background: #EFE9DE;
+  border-color: #731A2D;
+}
+html[data-theme="paper"] .cta-primary,
+html[data-theme="paper"] .submit,
+html[data-theme="paper"] .pack-select-btn.is-primary {
+  background: #731A2D;
+  color: #F6F1E8;
+  border-color: #731A2D;
+}
+html[data-theme="paper"] .cta-primary:hover,
+html[data-theme="paper"] .submit:hover,
+html[data-theme="paper"] .pack-select-btn.is-primary:hover {
+  background: #4A0E18;
+  border-color: #4A0E18;
+}
+html[data-theme="paper"] .pack-card.featured {
+  background: linear-gradient(160deg, #F0E6D8 0%, #E5DACB 100%);
+  border-color: #731A2D;
+}
+html[data-theme="paper"] .featured-ribbon {
+  background: #731A2D;
+  color: #F6F1E8;
+}
+html[data-theme="paper"] .player-sheet,
+html[data-theme="paper"] .settings-sheet {
+  background: #F6F1E8;
+  color: #2A0810;
+  border-color: #731A2D;
+}
+html[data-theme="paper"] .settings legend,
+html[data-theme="paper"] .settings-bar h2 {
+  color: #4A0E18;
+}
+html[data-theme="paper"] .field input {
+  color: #2A0810;
+  border-bottom-color: rgba(74, 14, 24, 0.35);
 }
 
 html[data-contrast="high"]:not([data-theme="paper"]) {
@@ -2540,6 +2605,40 @@ html[data-camera="off"] .hero-grid { grid-template-columns: 1fr !important; }
 
 html[data-size="s"] { font-size: 87.5%; }
 html[data-size="l"] { font-size: 112.5%; }
+
+@media (pointer: coarse), (hover: none) {
+  .cursor {
+    display: none !important;
+  }
+  body.use-cursor, body.use-cursor * {
+    cursor: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .canvas-container {
+    min-height: 260px;
+  }
+  .stage-3d-wrapper {
+    padding: 0.75rem;
+  }
+  .stage-modes {
+    gap: 0.35rem;
+  }
+  .stage-mode-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.58rem;
+  }
+  .entry-slate {
+    padding: 1.5rem 0.75rem;
+  }
+  .hero {
+    padding: 6.5rem 0 3.5rem;
+  }
+  .block {
+    padding: 4.5rem 0;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html:not([data-motion="full"]) { scroll-behavior: auto; }

@@ -71,21 +71,35 @@
      ========================================================================== */
   var audioCtx = null;
   function getAudioContext() {
-    if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
-      var AudioConstructor = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioConstructor();
+    try {
+      if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+        var AudioConstructor = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioConstructor();
+      }
+      return audioCtx;
+    } catch (e) {
+      return null;
     }
-    if (audioCtx && audioCtx.state === "suspended") {
-      audioCtx.resume();
-    }
-    return audioCtx;
   }
+
+  function unlockAudio() {
+    try {
+      var ctx = getAudioContext();
+      if (ctx && ctx.state === "suspended") {
+        ctx.resume().catch(function () {});
+      }
+    } catch (e) {}
+    window.removeEventListener("pointerdown", unlockAudio);
+    window.removeEventListener("keydown", unlockAudio);
+  }
+  window.addEventListener("pointerdown", unlockAudio, { once: true, passive: true });
+  window.addEventListener("keydown", unlockAudio, { once: true, passive: true });
 
   function playAcousticClick() {
     if (root.getAttribute("data-sound") !== "on") return;
     try {
       var ctx = getAudioContext();
-      if (!ctx) return;
+      if (!ctx || ctx.state !== "running") return;
       var osc = ctx.createOscillator();
       var gain = ctx.createGain();
       osc.type = "sine";
@@ -106,7 +120,7 @@
     if (root.getAttribute("data-sound") !== "on") return;
     try {
       var ctx = getAudioContext();
-      if (!ctx) return;
+      if (!ctx || ctx.state !== "running") return;
       var osc = ctx.createOscillator();
       var gain = ctx.createGain();
       osc.type = "triangle";
@@ -559,6 +573,15 @@
       }
     }, { passive: true });
 
+    // WebGL Context Loss & Recovery
+    canvas.addEventListener("webglcontextlost", function (e) {
+      e.preventDefault();
+      isVisible = false;
+    }, false);
+    canvas.addEventListener("webglcontextrestored", function () {
+      initThreeJsStage();
+    }, false);
+
     // Responsive Resize Handler
     function handleResize() {
       if (!container || !renderer || !camera) return;
@@ -658,6 +681,12 @@
 
   function openFilm(button) {
     if (!player || !playerVideo) return;
+    // Pause any active preview videos
+    document.querySelectorAll(".hover-preview").forEach(function (v) {
+      v.classList.remove("is-playing");
+      v.pause();
+    });
+
     filmOpener = button;
     var title = button.getAttribute("data-title") || "NĀMITRA Commercial";
     var note = button.getAttribute("data-note") || "";
@@ -675,10 +704,6 @@
       playerAspectBadge.textContent = isTall ? "9:16 VERTICAL" : "16:9 WIDESCREEN";
     }
 
-    if (playerCommissionBtn) {
-      playerCommissionBtn.setAttribute("href", "#contact");
-    }
-
     player.hidden = false;
     document.body.classList.add("is-playing");
     playAcousticClick();
@@ -693,6 +718,12 @@
     document.body.classList.remove("is-playing");
     playAcousticClick();
     if (filmOpener) filmOpener.focus();
+  }
+
+  if (playerCommissionBtn) {
+    playerCommissionBtn.addEventListener("click", function () {
+      closeFilm();
+    });
   }
 
   document.addEventListener("click", function (e) {

@@ -192,7 +192,10 @@ a {
    -------------------------------------------------------------------------- */
 .grain, .vignette, .anamorphic-flare {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
 }
 
@@ -218,9 +221,9 @@ a {
 }
 
 @keyframes flareFloat {
-  0% { transform: scale(1) translateY(0); opacity: 0.8; }
-  50% { transform: scale(1.05) translateY(-15px); opacity: 1; }
-  100% { transform: scale(0.98) translateY(10px); opacity: 0.85; }
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.85; }
 }
 
 /* --------------------------------------------------------------------------
@@ -545,6 +548,7 @@ a {
    -------------------------------------------------------------------------- */
 .wrap {
   width: min(var(--wrap-max), calc(100% - 3rem));
+  max-width: calc(100vw - 3rem);
   margin-inline: auto;
 }
 
@@ -598,7 +602,8 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100vw;
+  right: auto;
   z-index: 100;
   background: rgba(7, 5, 6, 0.78);
   backdrop-filter: blur(16px);
@@ -822,12 +827,27 @@ a {
 @media (min-width: 1200px) {
   .rail { display: flex; }
   #page { margin-left: var(--rail); }
-  .hud { left: var(--rail); }
+  .hud { left: var(--rail); width: calc(100vw - var(--rail)); }
+}
+
+@media (max-width: 959px) {
+  .hud-cta,
+  .settings-text,
+  .hud-sub,
+  .hud-sep { display: none; }
+  .hud-inner { gap: 0.5rem; }
+  .hud-actions { flex: none; }
+  .hud-name { font-size: 1rem; letter-spacing: 0.04em; }
+  .settings-open { padding-inline: 0.55rem; }
 }
 
 @media (min-width: 960px) {
+  .hud-nav { display: flex; gap: 0.85rem; }
+  .hud-link { letter-spacing: 0.08em; }
+}
+
+@media (min-width: 1500px) {
   .hud-telemetry { display: flex; }
-  .hud-nav { display: flex; }
 }
 
 /* --------------------------------------------------------------------------
@@ -862,6 +882,8 @@ a {
 
 .hero-kicker-row {
   display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   align-items: center;
   gap: 0.6rem;
   padding: 0.35rem 0.85rem;
@@ -1021,8 +1043,9 @@ h1 em {
 .canvas-container {
   position: relative;
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 1 / 1;
-  min-height: 380px;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1991,6 +2014,11 @@ h1 em {
   height: 48px;
   color: var(--gold-2);
 }
+.lens-core-mark svg {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
 
 .studio-slate-data {
   margin-top: 2rem;
@@ -2195,10 +2223,11 @@ h1 em {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2rem;
   align-items: center;
 }
+.footer-inner > * { min-width: 0; max-width: 100%; }
 @media (min-width: 768px) {
   .footer-inner {
     grid-template-columns: 1fr auto;
@@ -2209,7 +2238,11 @@ h1 em {
   display: flex;
   gap: 1rem;
   align-items: center;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
+.lockup > div { min-width: 0; }
 .lockup-name {
   margin: 0;
   font-family: var(--serif);
@@ -2238,15 +2271,20 @@ h1 em {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  max-width: 100%;
 }
 .footer-contacts a {
   font-family: var(--sans);
   font-size: 0.85rem;
   color: var(--ivory-muted);
+  overflow-wrap: anywhere;
   transition: color var(--dur-fast) var(--ease);
+}
+@media (min-width: 768px) {
+  .footer-contacts { display: flex; flex-wrap: wrap; gap: 1.5rem; }
 }
 .footer-contacts a:hover {
   color: var(--gold);
@@ -2272,11 +2310,12 @@ h1 em {
 @media (max-width: 800px) {
   .dock {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     position: fixed;
     z-index: 150;
     left: 0;
-    right: 0;
+    width: 100vw;
+    right: auto;
     bottom: 0;
     background: rgba(16, 10, 13, 0.95);
     backdrop-filter: blur(12px);
@@ -2289,9 +2328,10 @@ h1 em {
     justify-content: center;
     gap: 0.35rem;
     font-family: var(--sans);
-    font-size: 0.72rem;
+    min-width: 0;
+    font-size: 0.62rem;
     font-weight: 600;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--ivory);
   }
@@ -2617,7 +2657,7 @@ html[data-size="l"] { font-size: 112.5%; }
 
 @media (max-width: 480px) {
   .canvas-container {
-    min-height: 260px;
+    min-height: 0;
   }
   .stage-3d-wrapper {
     padding: 0.75rem;

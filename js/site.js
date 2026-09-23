@@ -747,8 +747,8 @@
   var summaryWaLink = document.getElementById("summary-whatsapp-link");
 
   var packNotesMap = {
-    "Rs 2,000": "Engineered for single-product sales or rapid promotions. Ready in 48 hours.",
-    "Rs 5,000": "Most popular choice. Tests 3 distinct customer hooks to uncover your lowest cost-per-lead.",
+    "Rs 2,000": "One short ad for a shop, clinic, or launch. First cut in days, not weeks.",
+    "Rs 5,000": "Three different cuts, so you can see which one people actually watch.",
     "Rs 10,000": "Complete growth funnel with 5 commercial cuts plus active Meta and WhatsApp campaign setup.",
     "Rs 20,000+": "Comprehensive brand architecture: 60s flagship film, 10x social reels, and director advisory."
   };

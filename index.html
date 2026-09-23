@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NĀMITRA Annonce — Ideas into Impact</title>
+  <meta name="description" content="NĀMITRA Annonce is an AI-native ad studio in Kukatpally, Hyderabad. Film, Reels, Meta, and WhatsApp-first pages. AI production, human kill/scale.">
+  <meta name="theme-color" content="#0B0708">
+  <meta property="og:title" content="NĀMITRA Annonce — Ideas into Impact">
+  <meta property="og:description" content="AI-native ad studio in Kukatpally, Hyderabad. Visual Stories. Real Impact.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/cormorant-500.ttf" as="font" type="font/ttf">
+  <link rel="preload" href="fonts/geist-400.ttf" as="font" type="font/ttf">
+  <link rel="stylesheet" href="css/site.css">
+  <script>
+  (function () {
+    var root = document.documentElement;
+    root.classList.add("js");
+    var prefs = {};
+    try { prefs = JSON.parse(localStorage.getItem("namitra-prefs") || "{}") || {}; } catch (e) { prefs = {}; }
+    var theme = prefs.theme || "cinema";
+    if (theme === "system") {
+      theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "paper" : "cinema";
+    }
+    root.setAttribute("data-theme", theme === "paper" ? "paper" : "cinema");
+    var contrast = prefs.contrast;
+    if (contrast !== "high" && contrast !== "standard") {
+      contrast = window.matchMedia("(prefers-contrast: more)").matches ? "high" : "standard";
+    }
+    root.setAttribute("data-contrast", contrast);
+    var motion = prefs.motion;
+    var reduce;
+    if (motion === "reduced") reduce = true;
+    else if (motion === "full") reduce = false;
+    else reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    root.setAttribute("data-motion", reduce ? "reduced" : "full");
+    root.setAttribute("data-size", prefs.size || "m");
+    var grainOff = prefs.grain === "off" || reduce;
+    root.setAttribute("data-grain", grainOff ? "off" : "on");
+    root.setAttribute("data-cursor", prefs.cursor === "system" ? "system" : "studio");
+    var coarse = window.matchMedia("(pointer: coarse)").matches;
+    var cameraOn;
+    if (reduce) cameraOn = false;
+    else if (prefs.camera === "off") cameraOn = false;
+    else if (prefs.camera === "on") cameraOn = true;
+    else cameraOn = !coarse;
+    root.setAttribute("data-camera", cameraOn ? "on" : "off");
+  })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "NĀMITRA Annonce",
+    "slogan": "Ideas into Impact.",
+    "description": "AI-native ad studio in Kukatpally, Hyderabad. Film, Reels, Meta, and WhatsApp-first pages.",
+    "telephone": "+91-9703556947",
+    "email": "bandaru.karunakar@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kukatpally",
+      "addressRegion": "Hyderabad",
+      "addressCountry": "IN"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Bandaru Narendra Karunakar Babu",
+      "jobTitle": "Director & Founder"
+    },
+    "sameAs": ["https://www.instagram.com/bnk_babu/"]
+  }
+  </script>
+  <style>html{background:#0B0708;color:#F6F1E8}html[data-theme="paper"]{background:#F6F1E8;color:#4A0E18}html[data-contrast="high"]:not([data-theme="paper"]){background:#000;color:#F6F1E8}</style>
+</head>
+<body>
+  <a class="skip-link" href="#hero">Skip to content</a>
+  <noscript><style>.entry{display:none}</style></noscript>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-ring"></span></div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0">
+    <symbol id="mark" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <rect x="6" y="20" width="34" height="26"/>
+        <circle cx="22" cy="33" r="7"/>
+        <path d="M40 26h8l6 4v8l-6 4h-8"/>
+        <path d="M14 20v-6h12v6"/>
+      </g>
+      <circle cx="22" cy="33" r="2.2" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <div class="entry" id="entry" role="dialog" aria-modal="true" aria-label="Title card">
+    <div class="entry-inner">
+      <p class="entry-name">NĀMITRA</p>
+      <p class="entry-annonce">Annonce</p>
+      <span class="entry-rule" aria-hidden="true"></span>
+      <p class="entry-sub">IGNITES · FRAMED · ADVERTISE</p>
+    </div>
+    <button class="entry-skip" id="skip-entry" type="button">Skip</button>
+  </div>
+
+  <div id="page">
+    <nav class="rail" aria-label="Studio">
+      <svg class="mark rail-mark" aria-hidden="true"><use href="#mark"></use></svg>
+      <p class="rail-creed">Story · Strategy · Impact</p>
+      <button class="settings-open" id="settings-open" type="button" aria-haspopup="dialog" aria-controls="settings" aria-expanded="false">Settings</button>
+    </nav>
+
+    <header class="hero" id="hero" tabindex="-1" aria-labelledby="hero-title">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="mast">
+              <span class="mast-name">NĀMITRA</span>
+              <span class="mast-dot" aria-hidden="true">·</span>
+              <span class="mast-annonce">Annonce</span>
+            </p>
+            <p class="place">Kukatpally, Hyderabad</p>
+            <hr class="rule">
+            <h1 id="hero-title">Ideas into<br><em>Impact.</em></h1>
+            <p class="deck">AI ads. Human kill/scale.</p>
+            <p class="for-whom">For a shop, a clinic, a coach, or a launch in Hyderabad. One line on WhatsApp. We cut the film.</p>
+            <div class="cta-row">
+              <a class="cta cta-primary" href="#contact">Start a brief <span aria-hidden="true">→</span></a>
+              <button class="cta cta-secondary" type="button" data-film data-src="videos/city-medicals-urban-logistics.mp4" data-poster="videos/poster-city-medicals.jpg" data-title="A 10-second local cut">Watch a 10s cut <span aria-hidden="true">→</span></button>
+              <a class="method-link" href="#method">The method</a>
+            </div>
+          </div>
+
+          <div class="sculpture" aria-hidden="true">
+            <div class="rig" id="rig">
+              <div class="cam-stack">
+                <svg class="cam-front" viewBox="0 0 460 296">
+                  <defs>
+                    <linearGradient id="bodyMetal" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#F4E7C8"/>
+                      <stop offset="0.38" stop-color="#E8D5A3"/>
+                      <stop offset="0.72" stop-color="#C4A35A"/>
+                      <stop offset="1" stop-color="#8A6B34"/>
+                    </linearGradient>
+                    <radialGradient id="glass" cx="38%" cy="34%" r="68%">
+                      <stop offset="0" stop-color="#F6F1E8"/>
+                      <stop offset="0.22" stop-color="#C4A35A"/>
+                      <stop offset="0.48" stop-color="#2A1014"/>
+                      <stop offset="1" stop-color="#050304"/>
+                    </radialGradient>
+                    <linearGradient id="vfGlass" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#F6F1E8" stop-opacity="0.85"/>
+                      <stop offset="0.42" stop-color="#6B1322"/>
+                      <stop offset="1" stop-color="#0B0708"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="24" y="74" width="412" height="214" fill="url(#bodyMetal)" stroke="#E8D5A3" stroke-width="2"/>
+                  <rect x="24" y="74" width="412" height="14" fill="#F6F1E8" opacity="0.28"/>
+                  <rect x="78" y="36" width="290" height="42" fill="url(#bodyMetal)" stroke="#E8D5A3" stroke-width="1.5"/>
+                  <rect x="188" y="18" width="68" height="20" fill="#E8D5A3"/>
+                  <circle cx="118" cy="56" r="15" fill="#1A100C" stroke="#E8D5A3" stroke-width="1.6"/>
+                  <circle cx="118" cy="56" r="3" fill="#E8D5A3"/>
+                  <path d="M310 42h42l10 10v10h-52z" fill="#C4A35A" stroke="#F6F1E8" stroke-width="1"/>
+                  <circle cx="168" cy="186" r="78" fill="#24180F" stroke="#F3E6C4" stroke-width="3"/>
+                  <circle cx="168" cy="186" r="66" fill="none" stroke="#E8D5A3" stroke-width="1.5" stroke-dasharray="1.5 6"/>
+                  <circle cx="168" cy="186" r="54" fill="#120C09" stroke="#C4A35A" stroke-width="4"/>
+                  <circle cx="168" cy="186" r="38" fill="url(#glass)"/>
+                  <circle cx="168" cy="186" r="14" fill="#0B0708" stroke="#E8D5A3" stroke-width="1"/>
+                  <ellipse cx="154" cy="170" rx="11" ry="7" fill="#F6F1E8" opacity="0.72"/>
+                  <rect x="286" y="112" width="116" height="42" fill="url(#vfGlass)" stroke="#E8D5A3" stroke-width="1.4"/>
+                  <circle cx="322" cy="196" r="20" fill="url(#vfGlass)" stroke="#C4A35A" stroke-width="1.6"/>
+                  <rect x="360" y="178" width="38" height="30" fill="#0B0708" stroke="#C4A35A" stroke-width="1.3"/>
+                  <path d="M40 262h380" stroke="#6E5324" stroke-width="8"/>
+                  <path d="M40 254h380" stroke="#E8D5A3" stroke-width="1"/>
+                  <circle cx="42" cy="92" r="2.4" fill="#F6F1E8"/>
+                  <circle cx="418" cy="92" r="2.4" fill="#F6F1E8"/>
+                  <circle cx="42" cy="270" r="2.4" fill="#C4A35A"/>
+                  <circle cx="418" cy="270" r="2.4" fill="#C4A35A"/>
+                </svg>
+              </div>
+              <div class="plinth">
+                <div class="plinth-cap"></div>
+                <div class="plinth-shaft"></div>
+                <div class="plinth-base"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+    <main id="main">
+      <section class="block sell" aria-labelledby="kicker-offer">
+        <div class="wrap">
+          <header class="sec-head reveal">
+            <p class="kicker" id="kicker-offer">01 — Offer</p>
+            <h2 id="sell-heading">What we actually sell</h2>
+            <p class="lede">Pick one. It fills the brief. You send it on WhatsApp.</p>
+          </header>
+          <ul class="offer reveal">
+            <li>
+              <span class="offer-name">AI-generated ad films 8–20s</span>
+              <span class="offer-for">One film for the shop, the clinic, or the launch.</span>
+              <button class="order" type="button" data-order="A film, 8 to 20 seconds, for my business.">Order this</button>
+            </li>
+            <li>
+              <span class="offer-name">Meta / WhatsApp campaigns</span>
+              <span class="offer-for">Ads that are watched, killed at 48 hours, or scaled.</span>
+              <button class="order" type="button" data-order="A Meta or WhatsApp campaign for my area.">Order this</button>
+            </li>
+            <li>
+              <span class="offer-name">Brand and strategy</span>
+              <span class="offer-for">The mark and the line, before the camera.</span>
+              <button class="order" type="button" data-order="A mark and a line for my business.">Order this</button>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="block brief" id="contact" aria-labelledby="kicker-contact">
+        <div class="wrap">
+          <header class="sec-head reveal">
+            <p class="kicker" id="kicker-contact">02 — Brief</p>
+            <h2 id="contact-heading">Brief</h2>
+          </header>
+          <div class="contact-grid">
+            <div class="reveal">
+              <p class="lede">Name, the area of Hyderabad, and one line. Send opens WhatsApp with the brief written out. No deck required.</p>
+              <ol class="next">
+                <li>You send one line.</li>
+                <li>The studio replies on WhatsApp.</li>
+                <li>You run the cut, or we kill it.</li>
+              </ol>
+              <dl class="contacts">
+                <div>
+                  <dt>WhatsApp</dt>
+                  <dd><a class="link" href="https://wa.me/919703556947" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +91 9703556947, opens WhatsApp">+91 9703556947</a></dd>
+                </div>
+                <div>
+                  <dt>Email</dt>
+                  <dd><a class="link" href="mailto:bandaru.karunakar@gmail.com">bandaru.karunakar@gmail.com</a></dd>
+                </div>
+                <div>
+                  <dt>Instagram</dt>
+                  <dd><a class="link" href="https://www.instagram.com/bnk_babu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @bnk_babu, opens Instagram">@bnk_babu</a></dd>
+                </div>
+              </dl>
+            </div>
+            <form class="reveal" id="brief-form" action="https://wa.me/919703556947" method="get">
+              <div class="starters">
+                <button class="order" type="button" data-order="A 12-second film for my shop.">Shop film</button>
+                <button class="order" type="button" data-order="A Reel for my clinic or service.">Service Reel</button>
+                <button class="order" type="button" data-order="A WhatsApp campaign for my area.">WhatsApp campaign</button>
+              </div>
+              <label class="field">
+                <span>Name</span>
+                <input id="brief-name" name="name" type="text" autocomplete="name" autocapitalize="words" required maxlength="80" aria-describedby="brief-name-error">
+                <p class="field-error" id="brief-name-error"></p>
+              </label>
+              <label class="field">
+                <span>Area of Hyderabad</span>
+                <input id="brief-area" name="area" type="text" autocomplete="address-level2" autocapitalize="words" required maxlength="80" aria-describedby="brief-area-error">
+                <p class="field-error" id="brief-area-error"></p>
+              </label>
+              <label class="field">
+                <span>One-line brief</span>
+                <input id="brief-line" name="brief" type="text" autocapitalize="sentences" required maxlength="240" aria-describedby="brief-line-error">
+                <p class="field-error" id="brief-line-error"></p>
+              </label>
+              <button class="submit" type="submit">Send the brief</button>
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+      <section class="block disciplines" aria-labelledby="kicker-disciplines">
+        <div class="wrap">
+          <header class="sec-head reveal">
+            <p class="kicker" id="kicker-disciplines">03 — Disciplines</p>
+            <h2 id="disc-heading">Five disciplines</h2>
+            <p class="lede">Most first orders are one film, or one campaign.</p>
+          </header>
+          <article class="discipline reveal">
+            <p class="num">01</p>
+            <h3>Film &amp; Content</h3>
+            <p>Frames that carry a name farther than a slogan.</p>
+          </article>
+          <article class="discipline reveal">
+            <p class="num">02</p>
+            <h3>Branding &amp; Advertising</h3>
+            <p>Marks, lockups, and the line the city remembers.</p>
+          </article>
+          <article class="discipline reveal">
+            <p class="num">03</p>
+            <h3>Creative Strategy</h3>
+            <p>Before the camera. After the brief. The cut that decides.</p>
+          </article>
+          <article class="discipline reveal">
+            <p class="num">04</p>
+            <h3>Digital Campaigns</h3>
+            <p>AI ads that are watched, killed at 48 hours, or scaled.</p>
+          </article>
+          <article class="discipline reveal">
+            <p class="num">05</p>
+            <h3>Advisory</h3>
+            <p>Counsel when the work is larger than a single launch.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="block method" id="method" aria-labelledby="kicker-method">
+        <div class="wrap">
+          <header class="sec-head reveal">
+            <p class="kicker" id="kicker-method">04 — Method</p>
+            <h2 id="method-heading">Method</h2>
+          </header>
+          <ol class="method-row reveal">
+            <li>Frame</li>
+            <li><span class="arr" aria-hidden="true">→</span>Line</li>
+            <li><span class="arr" aria-hidden="true">→</span>Media</li>
+            <li><span class="arr" aria-hidden="true">→</span>Counsel</li>
+          </ol>
+          <div class="method-notes reveal">
+            <p>We find the picture the neighbourhood already believes.</p>
+            <p>One sentence that can live on a board, a Reel, and a WhatsApp status.</p>
+            <p>Digital that is budgeted, watched, killed at 48 hours, or scaled. We do not decorate media.</p>
+            <p>We stay for the second brief. Advisory is not a slide. It is the next year.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="block studio" aria-labelledby="kicker-studio">
+        <div class="wrap reveal">
+          <p class="kicker" id="kicker-studio">05 — Studio</p>
+          <h2 id="studio-heading">Kukatpally,<br>Hyderabad</h2>
+          <p class="lede">NĀMITRA Annonce works from Hyderabad. The letterhead is the contract: story, strategy, impact — ideas driven until they land.</p>
+          <p class="role">Director &amp; Founder</p>
+          <p class="founder">Bandaru Narendra Karunakar Babu</p>
+          <blockquote>
+            <p>“Every frame ignites a bigger tomorrow.”</p>
+          </blockquote>
+          <p class="close">Visual Stories. Real Impact.</p>
+        </div>
+      </section>
+
+      <section class="block work" aria-labelledby="kicker-work">
+        <div class="wrap">
+          <header class="sec-head reveal">
+            <p class="kicker" id="kicker-work">06 — Frames</p>
+            <h2 id="work-heading">The Cinema Vault</h2>
+            <p class="lede">A short cut is a complete order. The longer films are the same desk, when the work is larger.</p>
+          </header>
+          <div class="filters reveal" role="group" aria-label="Filter the vault">
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="wide" aria-pressed="false">16:9</button>
+            <button type="button" data-filter="tall" aria-pressed="false">9:16</button>
+            <button type="button" data-filter="square" aria-pressed="false">1:1</button>
+          </div>
+          <div class="vault">
+            <article class="cut reveal" data-format="wide">
+              <button class="frame wide" type="button" data-film data-src="videos/bahuvida-macadamia-estate-film.mp4" data-poster="videos/poster-bahuvida-estate.jpg" data-title="Bahuvida Macadamia Estate" aria-label="Play Bahuvida Macadamia Estate">
+                <img src="videos/poster-bahuvida-estate.jpg" alt="">
+                <span class="play-mark">Play</span>
+              </button>
+              <div class="cut-copy">
+                <p class="kicker">Larger work · 60s · 16:9</p>
+                <h3>Bahuvida Macadamia Estate</h3>
+                <p class="blurb">A long estate film from the same desk. A first order does not have to look like this.</p>
+              </div>
+            </article>
+            <article class="cut reveal" data-format="tall">
+              <button class="frame tall" type="button" data-film data-src="videos/namitra-studio-vertical-reel.mp4" data-poster="videos/poster-namitra-reel.jpg" data-title="From Strategy to Real Impact" aria-label="Play From Strategy to Real Impact">
+                <img src="videos/poster-namitra-reel.jpg" alt="">
+                <span class="play-mark">Play</span>
+              </button>
+              <div class="cut-copy">
+                <p class="kicker">Reel · 30s · 9:16</p>
+                <h3>From Strategy to Real Impact</h3>
+                <p class="blurb">From 35mm grading consoles to mobile feeds. The exact cadence that turns attention into sovereign equity.</p>
+              </div>
+            </article>
+            <article class="cut reveal" data-format="wide">
+              <button class="frame wide" type="button" data-film data-src="videos/jcb-industrial-regional-ad.mp4" data-poster="videos/poster-jcb-ad.jpg" data-title="JCB Industrial Lubricants" aria-label="Play JCB Industrial Lubricants">
+                <img src="videos/poster-jcb-ad.jpg" alt="">
+                <span class="play-mark">Play</span>
+              </button>
+              <div class="cut-copy">
+                <p class="kicker">Vernacular · 30s · 16:9</p>
+                <h3>JCB Industrial Lubricants</h3>
+                <p class="blurb">A regional performance commercial spoken in the hard-hitting industrial language of the trade.</p>
+              </div>
+            </article>
+            <article class="cut reveal" data-format="square">
+              <button class="frame square" type="button" data-film data-src="videos/bahuvida-cinematic-action.mp4" data-poster="videos/poster-bahuvida-action.jpg" data-title="Canyon Railway &amp; Aerial Drop" aria-label="Play Canyon Railway and Aerial Drop">
+                <img src="videos/poster-bahuvida-action.jpg" alt="">
+                <span class="play-mark">Play</span>
+              </button>
+              <div class="cut-copy">
+                <p class="kicker">Action spot · 58s · 1:1</p>
+                <h3>Canyon Railway &amp; Aerial Drop</h3>
+                <p class="blurb">High-tension commercial action engineering designed to command absolute 3-second retention.</p>
+              </div>
+            </article>
+            <article class="cut reveal" data-format="wide">
+              <button class="frame wide" type="button" data-film data-src="videos/city-medicals-urban-logistics.mp4" data-poster="videos/poster-city-medicals.jpg" data-title="City Medicals Urban Logistics" aria-label="Play City Medicals Urban Logistics">
+                <img src="videos/poster-city-medicals.jpg" alt="">
+                <span class="play-mark">Play</span>
+              </button>
+              <div class="cut-copy">
+                <p class="kicker">Bumper · 10s · 16:9</p>
+                <h3>City Medicals Urban Logistics</h3>
+                <p class="blurb">Framing hyperlocal precision, electric fleet speed, and community health trust in 10 seconds.</p>
+              </div>
+            </article>
+            <article class="cut reveal" data-format="wide">
+              <button class="frame wide" type="button" data-film data-src="videos/luxury-estate-aerial-drone.mp4" data-poster="videos/poster-estate-drone.jpg" data-title="Topographic Agricultural Grandeur" aria-label="Play Topographic Agricultural Grandeur">
+                <img src="videos/poster-estate-drone.jpg" alt="">
+                <span class="play-mark">Play</span>
+              </button>
+              <div class="cut-copy">
+                <p class="kicker">Aerial · 10s · 16:9</p>
+                <h3>Topographic Agricultural Grandeur</h3>
+                <p class="blurb">Establishing monumental physical scale from 500 feet before the narrative even speaks.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <div class="lockup">
+          <svg class="mark" aria-hidden="true"><use href="#mark"></use></svg>
+          <div>
+            <p class="lockup-name">NĀMITRA</p>
+            <p class="lockup-annonce">Annonce</p>
+            <p class="lockup-sub">Ignites. Framed. Advertise.</p>
+          </div>
+        </div>
+        <ul class="footer-contacts">
+          <li><a href="tel:+919703556947">+91 9703556947</a></li>
+          <li><a href="mailto:bandaru.karunakar@gmail.com">bandaru.karunakar@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/bnk_babu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @bnk_babu, opens Instagram">@bnk_babu</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <a class="order-bar" href="#contact">Start a brief</a>
+
+  <div class="settings" id="settings" hidden role="dialog" aria-modal="true" aria-labelledby="settings-title">
+    <div class="settings-sheet">
+      <div class="settings-bar">
+        <h2 id="settings-title">Settings</h2>
+        <button type="button" id="settings-close" aria-label="Close settings">Close</button>
+      </div>
+      <fieldset>
+        <legend>Theme</legend>
+        <label><input type="radio" name="theme" value="cinema"> Cinema</label>
+        <label><input type="radio" name="theme" value="paper"> Paper</label>
+        <label><input type="radio" name="theme" value="system"> System</label>
+      </fieldset>
+      <fieldset>
+        <legend>Motion</legend>
+        <label><input type="radio" name="motion" value="full"> Full</label>
+        <label><input type="radio" name="motion" value="reduced"> Reduced</label>
+        <label><input type="radio" name="motion" value="auto"> Auto</label>
+      </fieldset>
+      <fieldset>
+        <legend>Text size</legend>
+        <label><input type="radio" name="size" value="s"> S</label>
+        <label><input type="radio" name="size" value="m"> M</label>
+        <label><input type="radio" name="size" value="l"> L</label>
+        <label><input type="radio" name="size" value="xl"> XL</label>
+      </fieldset>
+      <fieldset>
+        <legend>Contrast</legend>
+        <label><input type="radio" name="contrast" value="standard"> Standard</label>
+        <label><input type="radio" name="contrast" value="high"> High</label>
+      </fieldset>
+      <fieldset>
+        <legend>Cursor</legend>
+        <label><input type="radio" name="cursor" value="studio"> Studio ring</label>
+        <label><input type="radio" name="cursor" value="system"> System</label>
+      </fieldset>
+      <fieldset>
+        <legend>Grain</legend>
+        <label><input type="radio" name="grain" value="on"> On</label>
+        <label><input type="radio" name="grain" value="off"> Off</label>
+      </fieldset>
+      <fieldset>
+        <legend>Camera</legend>
+        <label><input type="radio" name="camera" value="on"> On</label>
+        <label><input type="radio" name="camera" value="off"> Off</label>
+      </fieldset>
+      <fieldset>
+        <legend>Language</legend>
+        <label><input type="radio" name="lang" value="en" checked> English</label>
+        <label><input type="radio" name="lang" value="te" disabled> Telugu <span class="soon">Soon</span></label>
+        <label><input type="radio" name="lang" value="hi" disabled> Hindi <span class="soon">Soon</span></label>
+      </fieldset>
+      <p class="settings-note">Preferences stay on this device.</p>
+    </div>
+  </div>
+
+  <div class="player" id="player" hidden>
+    <div class="player-sheet" role="dialog" aria-modal="true" aria-labelledby="player-title">
+      <button class="player-close" id="player-close" type="button">Close</button>
+      <h2 id="player-title"></h2>
+      <video id="player-video" controls playsinline preload="none"></video>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>
